@@ -1,0 +1,32 @@
+
+# AI - Codex local
+/AGENTS.md
+/ai-context/
+/README_CAI_DAT.md
+
+# Dependencies
+node_modules/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Build output
+dist/
+build/
+coverage/
+
+# Private storage
+storage/
+
+# Backup and logs
+*.zip
+*.log
+*.dump
+*.backup
+
+# Temporary files
+~$*
+.DS_Store
+Thumbs.db

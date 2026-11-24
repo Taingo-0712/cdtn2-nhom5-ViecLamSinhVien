@@ -1,0 +1,1096 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" version="28.1.2" pages="2" compressed="false">
+  <diagram id="erd-v4" name="01 - ERD tổng thể - 13 bảng mục tiêu">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3164" pageHeight="1554" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="a1" value="ERD TỔNG THỂ v4.0  /  STUDENT JOBS — NHÓM 5" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=32;fontColor=#17365C;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="20" width="3044" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" value="PostgreSQL 16  •  US01–US49  •  11 bảng kế thừa + 2 bảng địa bàn (đề xuất)  •  Thiết kế mục tiêu, chưa migration" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=19;fontColor=#536A7B;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="60" y="75" width="3044" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" value="PK: khóa chính  |  FK: khóa ngoại  |  UQ: UNIQUE  |  NN: NOT NULL  |  ?: NULL  |  L: NULL legacy  |  NN*: sau chuyển tiếp  |  FK?: chờ BR48  |  Nền xanh ngọc: đề xuất v4.0" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=15;fontColor=#087E83;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="60" y="112" width="3044" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="edge0" value="" edge="1" parent="1" source="users" target="student_profiles" style="edgeStyle=none;curved=0;rounded=0;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#667D92;dashed=0;html=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="626.53" y="304.5" />
+              <mxPoint x="653.32" y="299.6" />
+              <mxPoint x="679.75" y="294.8" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge1" value="" edge="1" parent="1" source="users" target="employer_profiles" style="edgeStyle=none;curved=0;rounded=0;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#667D92;dashed=0;html=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="557.1" y="591.49" />
+              <mxPoint x="620.29" y="656.6" />
+              <mxPoint x="681.48" y="719.65" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge2" value="" edge="1" parent="1" source="student_profiles" target="student_availability_slots" style="edgeStyle=none;curved=0;rounded=0;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#667D92;dashed=0;html=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1252.5" y="323.1" />
+              <mxPoint x="1279.3" y="330.2" />
+              <mxPoint x="1305.8" y="337.3" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge6" value="" edge="1" parent="1" source="student_profiles" target="applications" style="edgeStyle=none;curved=0;rounded=0;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#667D92;dashed=0;html=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1489.7" y="273.1" />
+              <mxPoint x="1852.0" y="292.5" />
+              <mxPoint x="1852.0" y="292.5" />
+              <mxPoint x="1852.0" y="292.5" />
+              <mxPoint x="1942.4" y="385.5" />
+              <mxPoint x="2032.0" y="477.56" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge3" value="" edge="1" parent="1" source="employer_profiles" target="job_posts" style="edgeStyle=none;curved=0;rounded=0;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#667D92;dashed=0;html=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1252.4" y="1001.5" />
+              <mxPoint x="1279.1" y="1001.5" />
+              <mxPoint x="1305.4" y="1001.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge4" value="" edge="1" parent="1" source="job_categories" target="job_posts" style="edgeStyle=none;curved=0;rounded=0;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#667D92;dashed=0;html=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="863.71" y="1327.93" />
+              <mxPoint x="1226.0" y="1308.5" />
+              <mxPoint x="1226.0" y="1308.5" />
+              <mxPoint x="1226.0" y="1308.5" />
+              <mxPoint x="1260.2" y="1278.94" />
+              <mxPoint x="1307.3" y="1238.16" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge5" value="" edge="1" parent="1" source="job_posts" target="job_time_slots" style="edgeStyle=none;curved=0;rounded=0;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#667D92;dashed=0;html=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1878.4" y="1001.5" />
+              <mxPoint x="1905.1" y="1001.5" />
+              <mxPoint x="1931.4" y="1001.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge7" value="" edge="1" parent="1" source="job_posts" target="applications" style="edgeStyle=none;curved=0;rounded=0;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#667D92;dashed=0;html=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1878.8" y="838.46" />
+              <mxPoint x="1905.8" y="823.56" />
+              <mxPoint x="1932.4" y="808.87" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge9" value="" edge="1" parent="1" source="job_time_slots" target="application_selected_slots" style="edgeStyle=none;curved=0;rounded=0;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#667D92;dashed=0;html=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2504.5" y="973.08" />
+              <mxPoint x="2531.3" y="970.51" />
+              <mxPoint x="2557.8" y="967.97" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge8" value="" edge="1" parent="1" source="applications" target="application_selected_slots" style="edgeStyle=none;curved=0;rounded=0;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#667D92;dashed=0;html=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2527.6" y="815.44" />
+              <mxPoint x="2564.0" y="833.5" />
+              <mxPoint x="2564.0" y="833.5" />
+              <mxPoint x="2564.0" y="833.5" />
+              <mxPoint x="2627.1" y="858.84" />
+              <mxPoint x="2692.2" y="884.97" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge10" value="" edge="1" parent="1" source="applications" target="reviews" style="edgeStyle=none;curved=0;rounded=0;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#667D92;dashed=0;html=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2504.4" y="672.18" />
+              <mxPoint x="2531.1" y="673.5" />
+              <mxPoint x="2557.4" y="674.81" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge11" value="" edge="1" parent="1" source="applications" target="notifications" style="edgeStyle=none;curved=0;rounded=0;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#667D92;dashed=0;html=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2509.5" y="545.77" />
+              <mxPoint x="2541.5" y="533.89" />
+              <mxPoint x="2572.7" y="522.27" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge15" value="" edge="1" parent="1" source="administrative_provinces" target="employer_profiles" style="edgeStyle=none;curved=0;rounded=0;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#087E83;dashed=1;html=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="626.53" y="942.02" />
+              <mxPoint x="653.32" y="946.87" />
+              <mxPoint x="679.75" y="951.66" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge16" value="" edge="1" parent="1" source="administrative_provinces" target="job_posts" style="edgeStyle=none;curved=0;rounded=0;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#087E83;dashed=1;html=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="576.58" y="754.29" />
+              <mxPoint x="686.0" y="694.5" />
+              <mxPoint x="686.0" y="694.5" />
+              <mxPoint x="686.0" y="694.5" />
+              <mxPoint x="1226.0" y="694.5" />
+              <mxPoint x="1226.0" y="694.5" />
+              <mxPoint x="1226.0" y="694.5" />
+              <mxPoint x="1260.2" y="724.06" />
+              <mxPoint x="1307.3" y="764.84" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge14" value="" edge="1" parent="1" source="administrative_provinces" target="administrative_wards" style="edgeStyle=none;curved=0;rounded=0;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#087E83;dashed=1;html=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="539.86" y="725.53" />
+              <mxPoint x="686.0" y="611.5" />
+              <mxPoint x="686.0" y="611.5" />
+              <mxPoint x="686.0" y="611.5" />
+              <mxPoint x="715.78" y="597.0" />
+              <mxPoint x="755.52" y="577.64" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge17" value="" edge="1" parent="1" source="administrative_wards" target="employer_profiles" style="edgeStyle=none;curved=0;rounded=0;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#087E83;dashed=1;html=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="956.0" y="615.85" />
+              <mxPoint x="956.0" y="654.17" />
+              <mxPoint x="956.0" y="654.17" />
+              <mxPoint x="956.0" y="654.17" />
+              <mxPoint x="956.0" y="679.84" />
+              <mxPoint x="956.0" y="711.45" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge18" value="" edge="1" parent="1" source="administrative_wards" target="job_posts" style="edgeStyle=none;curved=0;rounded=0;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#087E83;dashed=1;html=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1193.5" y="595.67" />
+              <mxPoint x="1226.0" y="611.5" />
+              <mxPoint x="1226.0" y="611.5" />
+              <mxPoint x="1226.0" y="611.5" />
+              <mxPoint x="1260.3" y="649.2" />
+              <mxPoint x="1307.6" y="701.17" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="users" value="" style="group;container=1;collapsible=0;recursiveResize=0;html=0;" vertex="1" parent="1">
+          <mxGeometry x="60.0" y="183.0" width="540" height="351" as="geometry" />
+        </mxCell>
+        <mxCell id="users_bg" value="" style="rounded=0;fillColor=#FFFFFF;strokeColor=#A8BCCB;" vertex="1" parent="users">
+          <mxGeometry x="0" y="0" width="540" height="351" as="geometry" />
+        </mxCell>
+        <mxCell id="users_head" value="users&#10;Tài khoản" style="rounded=0;fillColor=#17365C;strokeColor=#17365C;fontColor=#FFFFFF;fontSize=17;fontStyle=1;align=left;spacingLeft=12;whiteSpace=wrap;html=0;" vertex="1" parent="users">
+          <mxGeometry x="0" y="0" width="540" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="users_f0" value="PK      user_id                    BIGINT           NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="users">
+          <mxGeometry x="2" y="54" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="users_f1" value="UQ      email                      VARCHAR(254)     NN" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="users">
+          <mxGeometry x="2" y="81" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="users_f2" value="·       password_hash              VARCHAR(255)     NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="users">
+          <mxGeometry x="2" y="108" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="users_f3" value="·       role                       VARCHAR(16)      NN" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="users">
+          <mxGeometry x="2" y="135" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="users_f4" value="·       created_at                 TIMESTAMPTZ      NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="users">
+          <mxGeometry x="2" y="162" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="users_f5" value="·       account_status             VARCHAR(16)      NN" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="users">
+          <mxGeometry x="2" y="189" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="users_f6" value="·       locked_at                  TIMESTAMPTZ       ?" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="users">
+          <mxGeometry x="2" y="216" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="users_f7" value="FK      locked_by                  BIGINT            ?" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="users">
+          <mxGeometry x="2" y="243" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="users_f8" value="·       lock_reason                TEXT              ?" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="users">
+          <mxGeometry x="2" y="270" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="users_f9" value="·       unlocked_at                TIMESTAMPTZ       ?" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="users">
+          <mxGeometry x="2" y="297" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="users_f10" value="FK      unlocked_by                BIGINT            ?" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="users">
+          <mxGeometry x="2" y="324" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="student_profiles" value="" style="group;container=1;collapsible=0;recursiveResize=0;html=0;" vertex="1" parent="1">
+          <mxGeometry x="686.0" y="150.0" width="540" height="189" as="geometry" />
+        </mxCell>
+        <mxCell id="student_profiles_bg" value="" style="rounded=0;fillColor=#FFFFFF;strokeColor=#A8BCCB;" vertex="1" parent="student_profiles">
+          <mxGeometry x="0" y="0" width="540" height="189" as="geometry" />
+        </mxCell>
+        <mxCell id="student_profiles_head" value="student_profiles&#10;Hồ sơ sinh viên" style="rounded=0;fillColor=#17365C;strokeColor=#17365C;fontColor=#FFFFFF;fontSize=17;fontStyle=1;align=left;spacingLeft=12;whiteSpace=wrap;html=0;" vertex="1" parent="student_profiles">
+          <mxGeometry x="0" y="0" width="540" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="student_profiles_f0" value="PK/FK   user_id                    BIGINT           NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="student_profiles">
+          <mxGeometry x="2" y="54" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="student_profiles_f1" value="·       full_name                  VARCHAR(150)     NN" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="student_profiles">
+          <mxGeometry x="2" y="81" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="student_profiles_f2" value="·       phone                      VARCHAR(11)       ?" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="student_profiles">
+          <mxGeometry x="2" y="108" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="student_profiles_f3" value="·       introduction               TEXT              ?" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="student_profiles">
+          <mxGeometry x="2" y="135" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="student_profiles_f4" value="·       updated_at                 TIMESTAMPTZ      NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="student_profiles">
+          <mxGeometry x="2" y="162" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="employer_profiles" value="" style="group;container=1;collapsible=0;recursiveResize=0;html=0;" vertex="1" parent="1">
+          <mxGeometry x="686.0" y="718.0" width="540" height="567" as="geometry" />
+        </mxCell>
+        <mxCell id="employer_profiles_bg" value="" style="rounded=0;fillColor=#FFFFFF;strokeColor=#A8BCCB;" vertex="1" parent="employer_profiles">
+          <mxGeometry x="0" y="0" width="540" height="567" as="geometry" />
+        </mxCell>
+        <mxCell id="employer_profiles_head" value="employer_profiles&#10;Hồ sơ &amp; xác minh NTD" style="rounded=0;fillColor=#17365C;strokeColor=#17365C;fontColor=#FFFFFF;fontSize=17;fontStyle=1;align=left;spacingLeft=12;whiteSpace=wrap;html=0;" vertex="1" parent="employer_profiles">
+          <mxGeometry x="0" y="0" width="540" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="employer_profiles_f0" value="PK/FK   user_id                    BIGINT           NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="employer_profiles">
+          <mxGeometry x="2" y="54" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="employer_profiles_f1" value="·       display_name               VARCHAR(200)     NN" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="employer_profiles">
+          <mxGeometry x="2" y="81" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="employer_profiles_f2" value="·       contact_name               VARCHAR(150)      L" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="employer_profiles">
+          <mxGeometry x="2" y="108" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="employer_profiles_f3" value="·       phone                      VARCHAR(11)       L" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="employer_profiles">
+          <mxGeometry x="2" y="135" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="employer_profiles_f4" value="·       introduction               TEXT              ?" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="employer_profiles">
+          <mxGeometry x="2" y="162" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="employer_profiles_f5" value="·       updated_at                 TIMESTAMPTZ      NN" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="employer_profiles">
+          <mxGeometry x="2" y="189" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="employer_profiles_f6" value="·       business_type              VARCHAR(20)       L" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="employer_profiles">
+          <mxGeometry x="2" y="216" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="employer_profiles_f7" value="·       tax_code                   VARCHAR(50)       ?" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="employer_profiles">
+          <mxGeometry x="2" y="243" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="employer_profiles_f8" value="FK?     industry_id                BIGINT            L" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="employer_profiles">
+          <mxGeometry x="2" y="270" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="employer_profiles_f9" value="FK      province_code              VARCHAR(16)       L" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="employer_profiles">
+          <mxGeometry x="2" y="297" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="employer_profiles_f10" value="FK      ward_code                  VARCHAR(16)       L" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="employer_profiles">
+          <mxGeometry x="2" y="324" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="employer_profiles_f11" value="·       address_detail             VARCHAR(255)      L" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="employer_profiles">
+          <mxGeometry x="2" y="351" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="employer_profiles_f12" value="·       logo_storage_key           VARCHAR(255)      ?" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="employer_profiles">
+          <mxGeometry x="2" y="378" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="employer_profiles_f13" value="·       verification_doc_key       VARCHAR(255)      L" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="employer_profiles">
+          <mxGeometry x="2" y="405" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="employer_profiles_f14" value="·       website_url                VARCHAR(500)      ?" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="employer_profiles">
+          <mxGeometry x="2" y="432" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="employer_profiles_f15" value="·       verification_status        VARCHAR(16)     NN*" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="employer_profiles">
+          <mxGeometry x="2" y="459" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="employer_profiles_f16" value="·       reject_reason              TEXT              ?" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="employer_profiles">
+          <mxGeometry x="2" y="486" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="employer_profiles_f17" value="·       verified_at                TIMESTAMPTZ       ?" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="employer_profiles">
+          <mxGeometry x="2" y="513" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="employer_profiles_f18" value="FK      verified_by                BIGINT            ?" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="employer_profiles">
+          <mxGeometry x="2" y="540" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_categories" value="" style="group;container=1;collapsible=0;recursiveResize=0;html=0;" vertex="1" parent="1">
+          <mxGeometry x="60.0" y="1289.0" width="540" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="job_categories_bg" value="" style="rounded=0;fillColor=#FFFFFF;strokeColor=#A8BCCB;" vertex="1" parent="job_categories">
+          <mxGeometry x="0" y="0" width="540" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="job_categories_head" value="job_categories&#10;Danh mục ngành nghề" style="rounded=0;fillColor=#17365C;strokeColor=#17365C;fontColor=#FFFFFF;fontSize=17;fontStyle=1;align=left;spacingLeft=12;whiteSpace=wrap;html=0;" vertex="1" parent="job_categories">
+          <mxGeometry x="0" y="0" width="540" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="job_categories_f0" value="PK      category_id                BIGINT           NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_categories">
+          <mxGeometry x="2" y="54" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_categories_f1" value="UQ      name                       VARCHAR(100)     NN" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_categories">
+          <mxGeometry x="2" y="81" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_categories_f2" value="·       is_active                  BOOLEAN          NN" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_categories">
+          <mxGeometry x="2" y="108" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts" value="" style="group;container=1;collapsible=0;recursiveResize=0;html=0;" vertex="1" parent="1">
+          <mxGeometry x="1312.0" y="610.0" width="540" height="783" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_bg" value="" style="rounded=0;fillColor=#FFFFFF;strokeColor=#A8BCCB;" vertex="1" parent="job_posts">
+          <mxGeometry x="0" y="0" width="540" height="783" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_head" value="job_posts&#10;Tin &amp; kiểm duyệt" style="rounded=0;fillColor=#17365C;strokeColor=#17365C;fontColor=#FFFFFF;fontSize=17;fontStyle=1;align=left;spacingLeft=12;whiteSpace=wrap;html=0;" vertex="1" parent="job_posts">
+          <mxGeometry x="0" y="0" width="540" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_f0" value="PK      job_id                     BIGINT           NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_posts">
+          <mxGeometry x="2" y="54" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_f1" value="FK      employer_id                BIGINT           NN" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_posts">
+          <mxGeometry x="2" y="81" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_f2" value="FK      category_id                BIGINT           NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_posts">
+          <mxGeometry x="2" y="108" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_f3" value="·       title                      VARCHAR(200)     NN" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_posts">
+          <mxGeometry x="2" y="135" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_f4" value="·       description                TEXT             NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_posts">
+          <mxGeometry x="2" y="162" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_f5" value="·       work_time                  TEXT             NN" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_posts">
+          <mxGeometry x="2" y="189" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_f6" value="·       schedule_type              VARCHAR(16)       ?" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_posts">
+          <mxGeometry x="2" y="216" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_f7" value="·       schedule_mode              VARCHAR(8)       NN" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_posts">
+          <mxGeometry x="2" y="243" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_f8" value="·       schedule_start_date        DATE              ?" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_posts">
+          <mxGeometry x="2" y="270" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_f9" value="·       schedule_end_date          DATE              ?" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_posts">
+          <mxGeometry x="2" y="297" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_f10" value="·       salary_min                 NUMERIC(12,2)    NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_posts">
+          <mxGeometry x="2" y="324" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_f11" value="·       salary_max                 NUMERIC(12,2)    NN" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_posts">
+          <mxGeometry x="2" y="351" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_f12" value="·       salary_unit                VARCHAR(10)      NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_posts">
+          <mxGeometry x="2" y="378" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_f13" value="·       city                       VARCHAR(100)     NN" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_posts">
+          <mxGeometry x="2" y="405" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_f14" value="·       location_detail            VARCHAR(255)     NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_posts">
+          <mxGeometry x="2" y="432" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_f15" value="·       status                     VARCHAR(16)      NN" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_posts">
+          <mxGeometry x="2" y="459" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_f16" value="·       completed_at               TIMESTAMPTZ       ?" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_posts">
+          <mxGeometry x="2" y="486" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_f17" value="·       cancelled_at               TIMESTAMPTZ       ?" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_posts">
+          <mxGeometry x="2" y="513" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_f18" value="·       cancel_reason              TEXT              ?" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_posts">
+          <mxGeometry x="2" y="540" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_f19" value="·       created_at                 TIMESTAMPTZ      NN" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_posts">
+          <mxGeometry x="2" y="567" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_f20" value="·       updated_at                 TIMESTAMPTZ      NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_posts">
+          <mxGeometry x="2" y="594" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_f21" value="FK      province_code              VARCHAR(16)       L" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_posts">
+          <mxGeometry x="2" y="621" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_f22" value="FK      ward_code                  VARCHAR(16)       L" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_posts">
+          <mxGeometry x="2" y="648" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_f23" value="·       moderation_status          VARCHAR(16)     NN*" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_posts">
+          <mxGeometry x="2" y="675" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_f24" value="·       moderation_reason          TEXT              ?" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_posts">
+          <mxGeometry x="2" y="702" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_f25" value="·       moderated_at               TIMESTAMPTZ       ?" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_posts">
+          <mxGeometry x="2" y="729" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_posts_f26" value="FK      moderated_by               BIGINT            ?" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_posts">
+          <mxGeometry x="2" y="756" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_time_slots" value="" style="group;container=1;collapsible=0;recursiveResize=0;html=0;" vertex="1" parent="1">
+          <mxGeometry x="1938.0" y="880.0" width="540" height="243" as="geometry" />
+        </mxCell>
+        <mxCell id="job_time_slots_bg" value="" style="rounded=0;fillColor=#FFFFFF;strokeColor=#A8BCCB;" vertex="1" parent="job_time_slots">
+          <mxGeometry x="0" y="0" width="540" height="243" as="geometry" />
+        </mxCell>
+        <mxCell id="job_time_slots_head" value="job_time_slots&#10;Lịch ca công việc" style="rounded=0;fillColor=#17365C;strokeColor=#17365C;fontColor=#FFFFFF;fontSize=17;fontStyle=1;align=left;spacingLeft=12;whiteSpace=wrap;html=0;" vertex="1" parent="job_time_slots">
+          <mxGeometry x="0" y="0" width="540" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="job_time_slots_f0" value="PK      job_slot_id                BIGINT           NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_time_slots">
+          <mxGeometry x="2" y="54" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_time_slots_f1" value="FK      job_id                     BIGINT           NN" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_time_slots">
+          <mxGeometry x="2" y="81" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_time_slots_f2" value="·       day_of_week                SMALLINT          ?" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_time_slots">
+          <mxGeometry x="2" y="108" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_time_slots_f3" value="·       start_time                 TIME              ?" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_time_slots">
+          <mxGeometry x="2" y="135" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_time_slots_f4" value="·       end_time                   TIME              ?" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_time_slots">
+          <mxGeometry x="2" y="162" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_time_slots_f5" value="·       start_at                   TIMESTAMPTZ       ?" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_time_slots">
+          <mxGeometry x="2" y="189" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="job_time_slots_f6" value="·       end_at                     TIMESTAMPTZ       ?" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="job_time_slots">
+          <mxGeometry x="2" y="216" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="student_availability_slots" value="" style="group;container=1;collapsible=0;recursiveResize=0;html=0;" vertex="1" parent="1">
+          <mxGeometry x="1312.0" y="316.0" width="540" height="189" as="geometry" />
+        </mxCell>
+        <mxCell id="student_availability_slots_bg" value="" style="rounded=0;fillColor=#FFFFFF;strokeColor=#A8BCCB;" vertex="1" parent="student_availability_slots">
+          <mxGeometry x="0" y="0" width="540" height="189" as="geometry" />
+        </mxCell>
+        <mxCell id="student_availability_slots_head" value="student_availability_slots&#10;Lịch rảnh sinh viên" style="rounded=0;fillColor=#17365C;strokeColor=#17365C;fontColor=#FFFFFF;fontSize=17;fontStyle=1;align=left;spacingLeft=12;whiteSpace=wrap;html=0;" vertex="1" parent="student_availability_slots">
+          <mxGeometry x="0" y="0" width="540" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="student_availability_slots_f0" value="PK      availability_slot_id       BIGINT           NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="student_availability_slots">
+          <mxGeometry x="2" y="54" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="student_availability_slots_f1" value="FK      student_id                 BIGINT           NN" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="student_availability_slots">
+          <mxGeometry x="2" y="81" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="student_availability_slots_f2" value="·       day_of_week                SMALLINT         NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="student_availability_slots">
+          <mxGeometry x="2" y="108" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="student_availability_slots_f3" value="·       start_time                 TIME             NN" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="student_availability_slots">
+          <mxGeometry x="2" y="135" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="student_availability_slots_f4" value="·       end_time                   TIME             NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="student_availability_slots">
+          <mxGeometry x="2" y="162" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="applications" value="" style="group;container=1;collapsible=0;recursiveResize=0;html=0;" vertex="1" parent="1">
+          <mxGeometry x="1938.0" y="482.0" width="540" height="351" as="geometry" />
+        </mxCell>
+        <mxCell id="applications_bg" value="" style="rounded=0;fillColor=#FFFFFF;strokeColor=#A8BCCB;" vertex="1" parent="applications">
+          <mxGeometry x="0" y="0" width="540" height="351" as="geometry" />
+        </mxCell>
+        <mxCell id="applications_head" value="applications&#10;Đơn ứng tuyển &amp; CV" style="rounded=0;fillColor=#17365C;strokeColor=#17365C;fontColor=#FFFFFF;fontSize=17;fontStyle=1;align=left;spacingLeft=12;whiteSpace=wrap;html=0;" vertex="1" parent="applications">
+          <mxGeometry x="0" y="0" width="540" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="applications_f0" value="PK      application_id             BIGINT           NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="applications">
+          <mxGeometry x="2" y="54" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="applications_f1" value="FK      job_id                     BIGINT           NN" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="applications">
+          <mxGeometry x="2" y="81" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="applications_f2" value="FK      student_id                 BIGINT           NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="applications">
+          <mxGeometry x="2" y="108" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="applications_f3" value="·       status                     VARCHAR(16)      NN" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="applications">
+          <mxGeometry x="2" y="135" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="applications_f4" value="·       status_before_cancel       VARCHAR(16)       ?" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="applications">
+          <mxGeometry x="2" y="162" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="applications_f5" value="UQ      cv_storage_key             VARCHAR(255)     NN" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="applications">
+          <mxGeometry x="2" y="189" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="applications_f6" value="·       cv_original_name           VARCHAR(255)     NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="applications">
+          <mxGeometry x="2" y="216" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="applications_f7" value="·       cv_mime_type               VARCHAR(100)     NN" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="applications">
+          <mxGeometry x="2" y="243" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="applications_f8" value="·       cv_size_bytes              INTEGER          NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="applications">
+          <mxGeometry x="2" y="270" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="applications_f9" value="·       applied_at                 TIMESTAMPTZ      NN" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="applications">
+          <mxGeometry x="2" y="297" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="applications_f10" value="·       decided_at                 TIMESTAMPTZ       ?" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="applications">
+          <mxGeometry x="2" y="324" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="application_selected_slots" value="" style="group;container=1;collapsible=0;recursiveResize=0;html=0;" vertex="1" parent="1">
+          <mxGeometry x="2564.0" y="887.5" width="540" height="108" as="geometry" />
+        </mxCell>
+        <mxCell id="application_selected_slots_bg" value="" style="rounded=0;fillColor=#FFFFFF;strokeColor=#A8BCCB;" vertex="1" parent="application_selected_slots">
+          <mxGeometry x="0" y="0" width="540" height="108" as="geometry" />
+        </mxCell>
+        <mxCell id="application_selected_slots_head" value="application_selected_slots&#10;Ca đã chọn" style="rounded=0;fillColor=#17365C;strokeColor=#17365C;fontColor=#FFFFFF;fontSize=17;fontStyle=1;align=left;spacingLeft=12;whiteSpace=wrap;html=0;" vertex="1" parent="application_selected_slots">
+          <mxGeometry x="0" y="0" width="540" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="application_selected_slots_f0" value="PK/FK   application_id             BIGINT           NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="application_selected_slots">
+          <mxGeometry x="2" y="54" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="application_selected_slots_f1" value="PK/FK   job_slot_id                BIGINT           NN" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="application_selected_slots">
+          <mxGeometry x="2" y="81" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="reviews" value="" style="group;container=1;collapsible=0;recursiveResize=0;html=0;" vertex="1" parent="1">
+          <mxGeometry x="2564.0" y="567.0" width="540" height="243" as="geometry" />
+        </mxCell>
+        <mxCell id="reviews_bg" value="" style="rounded=0;fillColor=#FFFFFF;strokeColor=#A8BCCB;" vertex="1" parent="reviews">
+          <mxGeometry x="0" y="0" width="540" height="243" as="geometry" />
+        </mxCell>
+        <mxCell id="reviews_head" value="reviews&#10;Đánh giá" style="rounded=0;fillColor=#17365C;strokeColor=#17365C;fontColor=#FFFFFF;fontSize=17;fontStyle=1;align=left;spacingLeft=12;whiteSpace=wrap;html=0;" vertex="1" parent="reviews">
+          <mxGeometry x="0" y="0" width="540" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="reviews_f0" value="PK      review_id                  BIGINT           NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="reviews">
+          <mxGeometry x="2" y="54" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="reviews_f1" value="FK      application_id             BIGINT           NN" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="reviews">
+          <mxGeometry x="2" y="81" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="reviews_f2" value="FK      reviewer_id                BIGINT           NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="reviews">
+          <mxGeometry x="2" y="108" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="reviews_f3" value="FK      reviewee_id                BIGINT           NN" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="reviews">
+          <mxGeometry x="2" y="135" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="reviews_f4" value="·       rating                     SMALLINT         NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="reviews">
+          <mxGeometry x="2" y="162" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="reviews_f5" value="·       comment                    TEXT              ?" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="reviews">
+          <mxGeometry x="2" y="189" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="reviews_f6" value="·       created_at                 TIMESTAMPTZ      NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="reviews">
+          <mxGeometry x="2" y="216" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="notifications" value="" style="group;container=1;collapsible=0;recursiveResize=0;html=0;" vertex="1" parent="1">
+          <mxGeometry x="2564.0" y="331.0" width="540" height="189" as="geometry" />
+        </mxCell>
+        <mxCell id="notifications_bg" value="" style="rounded=0;fillColor=#FFFFFF;strokeColor=#A8BCCB;" vertex="1" parent="notifications">
+          <mxGeometry x="0" y="0" width="540" height="189" as="geometry" />
+        </mxCell>
+        <mxCell id="notifications_head" value="notifications&#10;Thông báo" style="rounded=0;fillColor=#17365C;strokeColor=#17365C;fontColor=#FFFFFF;fontSize=17;fontStyle=1;align=left;spacingLeft=12;whiteSpace=wrap;html=0;" vertex="1" parent="notifications">
+          <mxGeometry x="0" y="0" width="540" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="notifications_f0" value="PK      notification_id            BIGINT           NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="notifications">
+          <mxGeometry x="2" y="54" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="notifications_f1" value="FK      application_id             BIGINT           NN" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="notifications">
+          <mxGeometry x="2" y="81" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="notifications_f2" value="FK      recipient_id               BIGINT           NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="notifications">
+          <mxGeometry x="2" y="108" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="notifications_f3" value="·       message                    TEXT             NN" style="rounded=0;strokeColor=none;fillColor=#FFFFFF;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="notifications">
+          <mxGeometry x="2" y="135" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="notifications_f4" value="·       created_at                 TIMESTAMPTZ      NN" style="rounded=0;strokeColor=none;fillColor=#F0F4F8;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="notifications">
+          <mxGeometry x="2" y="162" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="administrative_provinces" value="" style="group;container=1;collapsible=0;recursiveResize=0;html=0;" vertex="1" parent="1">
+          <mxGeometry x="60.0" y="807.5" width="540" height="162" as="geometry" />
+        </mxCell>
+        <mxCell id="administrative_provinces_bg" value="" style="rounded=0;fillColor=#FFFFFF;strokeColor=#A8BCCB;" vertex="1" parent="administrative_provinces">
+          <mxGeometry x="0" y="0" width="540" height="162" as="geometry" />
+        </mxCell>
+        <mxCell id="administrative_provinces_head" value="administrative_provinces&#10;Tỉnh / thành phố" style="rounded=0;fillColor=#087E83;strokeColor=#087E83;fontColor=#FFFFFF;fontSize=17;fontStyle=1;align=left;spacingLeft=12;whiteSpace=wrap;html=0;" vertex="1" parent="administrative_provinces">
+          <mxGeometry x="0" y="0" width="540" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="administrative_provinces_f0" value="PK      province_code              VARCHAR(16)      NN" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="administrative_provinces">
+          <mxGeometry x="2" y="54" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="administrative_provinces_f1" value="·       name                       VARCHAR(200)     NN" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="administrative_provinces">
+          <mxGeometry x="2" y="81" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="administrative_provinces_f2" value="·       source_version             VARCHAR(100)     NN" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="administrative_provinces">
+          <mxGeometry x="2" y="108" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="administrative_provinces_f3" value="·       is_active                  BOOLEAN          NN" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="administrative_provinces">
+          <mxGeometry x="2" y="135" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="administrative_wards" value="" style="group;container=1;collapsible=0;recursiveResize=0;html=0;" vertex="1" parent="1">
+          <mxGeometry x="686.0" y="386.0" width="540" height="189" as="geometry" />
+        </mxCell>
+        <mxCell id="administrative_wards_bg" value="" style="rounded=0;fillColor=#FFFFFF;strokeColor=#A8BCCB;" vertex="1" parent="administrative_wards">
+          <mxGeometry x="0" y="0" width="540" height="189" as="geometry" />
+        </mxCell>
+        <mxCell id="administrative_wards_head" value="administrative_wards&#10;Phường / xã / đặc khu" style="rounded=0;fillColor=#087E83;strokeColor=#087E83;fontColor=#FFFFFF;fontSize=17;fontStyle=1;align=left;spacingLeft=12;whiteSpace=wrap;html=0;" vertex="1" parent="administrative_wards">
+          <mxGeometry x="0" y="0" width="540" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="administrative_wards_f0" value="PK      ward_code                  VARCHAR(16)      NN" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="administrative_wards">
+          <mxGeometry x="2" y="54" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="administrative_wards_f1" value="FK      province_code              VARCHAR(16)      NN" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="administrative_wards">
+          <mxGeometry x="2" y="81" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="administrative_wards_f2" value="·       name                       VARCHAR(200)     NN" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="administrative_wards">
+          <mxGeometry x="2" y="108" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="administrative_wards_f3" value="·       source_version             VARCHAR(100)     NN" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="administrative_wards">
+          <mxGeometry x="2" y="135" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="administrative_wards_f4" value="·       is_active                  BOOLEAN          NN" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="administrative_wards">
+          <mxGeometry x="2" y="162" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" value="Các đường xanh nét đứt: FK địa bàn đề xuất. Các FK actor Admin, reviewer/reviewee và recipient được liệt kê đầy đủ tại trang 02 để tránh chồng đường." style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=17;fontColor=#536A7B;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1439" width="3044" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="a5" value="Nguồn: Database Schema v4.0 §2–5, §12.6  •  API Contract v4.0  •  Không có bảng Admin riêng, Dashboard, CV, chat hay payroll.  •  industry_id: xem phương án có điều kiện trang 02." style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=16;fontColor=#536A7B;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1480" width="3044" height="34" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="erd-v4-rules" name="02 - FK, ràng buộc và phương án BR48">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2600" pageHeight="1510" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="a1" value="ERD v4.0  /  QUAN HỆ KHÓA NGOẠI VÀ RÀNG BUỘC" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=31;fontColor=#17365C;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="45" y="20" width="2500" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" value="Ma trận FK đầy đủ — gồm các liên kết không vẽ trên trang 01  •  N = nhiều bản ghi  •  ¹ ngoại lệ tin/đơn legacy không có lịch" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=18;fontColor=#536A7B;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="78" width="2500" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" value="Bảng cha / PK hoặc UQ" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=none;fillColor=#17365C;fontFamily=Arial;fontSize=15;fontColor=#FFFFFF;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="45" y="130" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" value="Bảng con" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=none;fillColor=#17365C;fontFamily=Arial;fontSize=15;fontColor=#FFFFFF;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="365" y="130" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a5" value="FK ở bảng con" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=none;fillColor=#17365C;fontFamily=Arial;fontSize=15;fontColor=#FFFFFF;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="665" y="130" width="365" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a6" value="Cha → con" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=none;fillColor=#17365C;fontFamily=Arial;fontSize=15;fontColor=#FFFFFF;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="130" width="145" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a7" value="Nguồn" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=none;fillColor=#17365C;fontFamily=Arial;fontSize=15;fontColor=#FFFFFF;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1175" y="130" width="125" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a8" value="users&#10;user_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="170" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a9" value="student_profiles" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="170" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a10" value="user_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="665" y="170" width="365" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a11" value="1 → 0..1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="170" width="145" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a12" value="Kế thừa" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1175" y="170" width="125" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a13" value="users&#10;user_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="210" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a14" value="employer_profiles" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="210" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a15" value="user_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="665" y="210" width="365" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a16" value="1 → 0..1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="210" width="145" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a17" value="Kế thừa" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1175" y="210" width="125" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a18" value="student_profiles&#10;user_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="250" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a19" value="student_availability_slots" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="250" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a20" value="student_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="665" y="250" width="365" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a21" value="1 → 0..21" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="250" width="145" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a22" value="Kế thừa" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1175" y="250" width="125" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a23" value="employer_profiles&#10;user_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="290" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a24" value="job_posts" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="290" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a25" value="employer_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="665" y="290" width="365" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a26" value="1 → 0..N" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="290" width="145" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a27" value="Kế thừa" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1175" y="290" width="125" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a28" value="job_categories&#10;category_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="330" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a29" value="job_posts" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="330" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a30" value="category_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="665" y="330" width="365" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a31" value="1 → 0..N" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="330" width="145" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a32" value="Kế thừa" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1175" y="330" width="125" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a33" value="job_posts&#10;job_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="370" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a34" value="job_time_slots" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="370" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a35" value="job_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="665" y="370" width="365" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a36" value="1 → 1..21¹" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="370" width="145" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a37" value="Kế thừa" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1175" y="370" width="125" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a38" value="student_profiles&#10;user_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="410" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a39" value="applications" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="410" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a40" value="student_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="665" y="410" width="365" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a41" value="1 → 0..N" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="410" width="145" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a42" value="Kế thừa" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1175" y="410" width="125" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a43" value="job_posts&#10;job_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="450" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a44" value="applications" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="450" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a45" value="job_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="665" y="450" width="365" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a46" value="1 → 0..N" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="450" width="145" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a47" value="Kế thừa" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1175" y="450" width="125" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a48" value="applications&#10;application_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="490" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a49" value="application_selected_slots" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="490" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a50" value="application_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="665" y="490" width="365" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a51" value="1 → 1..N¹" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="490" width="145" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a52" value="Kế thừa" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1175" y="490" width="125" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a53" value="job_time_slots&#10;job_slot_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="530" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a54" value="application_selected_slots" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="530" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a55" value="job_slot_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="665" y="530" width="365" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a56" value="1 → 0..N" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="530" width="145" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a57" value="Kế thừa" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1175" y="530" width="125" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a58" value="applications&#10;application_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="570" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a59" value="reviews" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="570" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a60" value="application_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="665" y="570" width="365" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a61" value="1 → 0..2" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="570" width="145" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a62" value="Kế thừa" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1175" y="570" width="125" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a63" value="applications&#10;application_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="610" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a64" value="notifications" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="610" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a65" value="application_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="665" y="610" width="365" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a66" value="1 → 0..N" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="610" width="145" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a67" value="Kế thừa" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1175" y="610" width="125" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a68" value="users&#10;user_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="650" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a69" value="notifications" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="650" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a70" value="recipient_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="665" y="650" width="365" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a71" value="1 → 0..N" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="650" width="145" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a72" value="Kế thừa" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1175" y="650" width="125" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a73" value="users&#10;user_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="690" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a74" value="reviews" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="690" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a75" value="reviewer_id; reviewee_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="665" y="690" width="365" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a76" value="1 → 0..N" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="690" width="145" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a77" value="Kế thừa" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#FFFFFF;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1175" y="690" width="125" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a78" value="administrative_provinces&#10;province_code" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="730" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a79" value="administrative_wards" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="730" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a80" value="province_code" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="665" y="730" width="365" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a81" value="1 → 0..N" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="730" width="145" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a82" value="Đề xuất" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1175" y="730" width="125" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a83" value="administrative_provinces&#10;province_code" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="770" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a84" value="employer_profiles" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="770" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a85" value="province_code" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="665" y="770" width="365" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a86" value="1 → 0..N" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="770" width="145" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a87" value="Đề xuất" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1175" y="770" width="125" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a88" value="administrative_provinces&#10;province_code" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="810" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a89" value="job_posts" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="810" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a90" value="province_code" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="665" y="810" width="365" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a91" value="1 → 0..N" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="810" width="145" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a92" value="Đề xuất" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1175" y="810" width="125" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a93" value="administrative_wards&#10;(province_code, ward_code)" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="850" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a94" value="employer_profiles" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="850" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a95" value="(province_code, ward_code)" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="665" y="850" width="365" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a96" value="1 → 0..N" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="850" width="145" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a97" value="Đề xuất" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1175" y="850" width="125" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a98" value="administrative_wards&#10;(province_code, ward_code)" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="890" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a99" value="job_posts" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="890" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a100" value="(province_code, ward_code)" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="665" y="890" width="365" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a101" value="1 → 0..N" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="890" width="145" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a102" value="Đề xuất" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1175" y="890" width="125" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a103" value="users&#10;user_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="930" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a104" value="users" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="930" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a105" value="locked_by; unlocked_by" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="665" y="930" width="365" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a106" value="1 → 0..N" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="930" width="145" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a107" value="Đề xuất" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1175" y="930" width="125" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a108" value="users&#10;user_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="970" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a109" value="employer_profiles" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="970" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a110" value="verified_by" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="665" y="970" width="365" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a111" value="1 → 0..N" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="970" width="145" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a112" value="Đề xuất" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1175" y="970" width="125" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a113" value="users&#10;user_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="1010" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a114" value="job_posts" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="1010" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a115" value="moderated_by" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="665" y="1010" width="365" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a116" value="1 → 0..N" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="1010" width="145" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a117" value="Đề xuất" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#DFF4F4;fontFamily=Arial;fontSize=14;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1175" y="1010" width="125" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a118" value="FK ON DELETE RESTRICT. Với FK địa bàn và actor nullable, mỗi bản ghi con tham chiếu 0..1 cha; hồ sơ/tin mới phải có đủ địa bàn sau phê duyệt." style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=none;fillColor=#F0F4F8;fontFamily=Arial;fontSize=15;fontColor=#536A7B;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="1065" width="1255" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="a119" value="PHƯƠNG ÁN 14 BẢNG — CHỜ BR48, KHÔNG PHẢI BẢNG BẮT BUỘC" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=none;fillColor=#FFF1D6;fontFamily=Arial;fontSize=19;fontColor=#9A641B;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="45" y="1129" width="1255" height="39" as="geometry" />
+        </mxCell>
+        <mxCell id="business_industries" value="" style="group;container=1;collapsible=0;recursiveResize=0;html=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="1184" width="540" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="business_industries_bg" value="" style="rounded=0;fillColor=#FFFFFF;strokeColor=#A8BCCB;" vertex="1" parent="business_industries">
+          <mxGeometry x="0" y="0" width="540" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="business_industries_head" value="business_industries&#10;Lĩnh vực NTD (có điều kiện)" style="rounded=0;fillColor=#087E83;strokeColor=#087E83;fontColor=#FFFFFF;fontSize=17;fontStyle=1;align=left;spacingLeft=12;whiteSpace=wrap;html=0;" vertex="1" parent="business_industries">
+          <mxGeometry x="0" y="0" width="540" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="business_industries_f0" value="PK      industry_id                BIGINT           NN" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="business_industries">
+          <mxGeometry x="2" y="54" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="business_industries_f1" value="UQ      name                       VARCHAR(100)     NN" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="business_industries">
+          <mxGeometry x="2" y="81" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="business_industries_f2" value="·       is_active                  BOOLEAN          NN" style="rounded=0;strokeColor=none;fillColor=#DFF4F4;fontColor=#18334D;fontSize=15;fontFamily=Consolas;align=left;spacingLeft=8;whiteSpace=wrap;html=0;" vertex="1" parent="business_industries">
+          <mxGeometry x="2" y="108" width="536" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="a120" value="A — Tách riêng: employer_profiles.industry_id&#10;→ business_industries.industry_id" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=none;fillColor=#E4F6F4;fontFamily=Arial;fontSize=17;fontColor=#087E83;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="1184" width="670" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="a121" value="B — Dùng chung: employer_profiles.industry_id&#10;→ job_categories.category_id (không tạo bảng 14)" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=none;fillColor=#F0F4F8;fontFamily=Arial;fontSize=17;fontColor=#17365C;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="1252" width="670" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="a122" value="Chỉ chọn một FK sau khi xác nhận BR48. Không thêm cả hai FK; FR27 chỉ quản lý ngành nghề tuyển dụng.&#10;API-29 là đề xuất, nguồn dữ liệu phụ thuộc phương án được duyệt." style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=none;fillColor=#FFF1D6;fontFamily=Arial;fontSize=16;fontColor=#536A7B;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="1350" width="1255" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="a123" value="01  Tài khoản / xác minh / kiểm duyệt" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=none;fillColor=#087E83;fontFamily=Arial;fontSize=18;fontColor=#FFFFFF;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1405" y="130" width="1150" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="a124" value="users.account_status: ACTIVE / LOCKED. NTD mới PENDING; chỉ ACTIVE + APPROVED tạo tin.&#10;verification_status và moderation_status: PENDING / APPROVED / REJECTED.&#10;Tách độc lập với job_posts.status; Admin ghi actor, thời điểm, lý do khi từ chối." style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#E4F6F4;fontFamily=Arial;fontSize=16;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1405" y="166" width="1150" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="a125" value="02  Địa bàn và danh mục" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=none;fillColor=#087E83;fontFamily=Arial;fontSize=18;fontColor=#FFFFFF;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1405" y="273" width="1150" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="a126" value="FK tỉnh + FK ghép (province_code, ward_code) → wards. UNIQUE cặp mã ở wards.&#10;Mã chuỗi giữ số 0 đầu; không tự đoán địa bàn legacy. is_active=FALSE không chọn mới.&#10;Nguồn/PK/encoding/hiệu lực và BR48 phải chốt trước migration." style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#E4F6F4;fontFamily=Arial;fontSize=16;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1405" y="309" width="1150" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="a127" value="03  Lịch ca và Matching" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=none;fillColor=#17365C;fontFamily=Arial;fontSize=18;fontColor=#FFFFFF;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1405" y="416" width="1150" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="a128" value="WEEKLY / ONE_TIME: 1–21 ca; SV 0–21 khoảng. Ca đêm là một bản ghi; chống overlap CN→T2.&#10;UQ ca theo shape; giờ bắt đầu khác kết thúc; không dùng 24:00. Matching ANY/ALL trọn một khoảng.&#10;Không lưu match_percent; tin legacy không suy lịch từ work_time." style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=16;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1405" y="452" width="1150" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="a129" value="04  Ứng tuyển và CV" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=none;fillColor=#17365C;fontFamily=Arial;fontSize=18;fontColor=#FFFFFF;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1405" y="559" width="1150" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="a130" value="UQ(student_id, job_id), UQ(cv_storage_key); PDF ≤5 MiB, lưu riêng tư.&#10;PK kép (application_id, job_slot_id); Service kiểm ca cùng job; giữ lựa chọn lịch sử.&#10;Khóa sửa lịch khi có bất kỳ đơn; duyệt muộn giữ decided_at và kiểm ca tương lai." style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=16;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1405" y="595" width="1150" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="a131" value="05  Vòng đời và thời gian" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=none;fillColor=#17365C;fontFamily=Arial;fontSize=18;fontColor=#FFFFFF;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1405" y="702" width="1150" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="a132" value="Tin: RECRUITING / FILLED / COMPLETED / EXPIRED / CANCELLED.&#10;Đơn: PENDING / APPROVED / REJECTED / JOB_EXPIRED / JOB_CANCELLED.&#10;Hết cơ hội ca chọn → JOB_EXPIRED; qua ca cuối → FILLED nếu có APPROVED, ngược lại EXPIRED.&#10;WEEKLY vô hạn không tự hết; đóng thủ công cần ≥1 APPROVED, 0 PENDING." style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=16;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1405" y="738" width="1150" height="108" as="geometry" />
+        </mxCell>
+        <mxCell id="a133" value="06  Hủy, đánh giá và thông báo" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=none;fillColor=#17365C;fontFamily=Arial;fontSize=18;fontColor=#FFFFFF;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1405" y="861" width="1150" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="a134" value="Hủy trước NGÀY ca đầu theo giờ VN, lý do nếu có đơn; mọi đơn JOB_CANCELLED.&#10;Giữ status_before_cancel, decided_at; transaction gồm cập nhật và notifications.&#10;Review chỉ COMPLETED + APPROVED; UQ(application_id, reviewer_id), mỗi chiều 1 lần." style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#F0F4F8;fontFamily=Arial;fontSize=16;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1405" y="897" width="1150" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="a135" value="07  Bảo mật và đồng thời" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=none;fillColor=#087E83;fontFamily=Arial;fontSize=18;fontColor=#FFFFFF;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1405" y="1004" width="1150" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="a136" value="CV/minh chứng không public; không lưu URL công khai. JWT cũ bị chặn trong thời gian LOCKED.&#10;Lock users → employer_profiles → category → job_posts → applications; worker job → đơn.&#10;Worker idempotent; rollback DB + dọn file mới khi lỗi; không tự COMPLETED." style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#E4F6F4;fontFamily=Arial;fontSize=16;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1405" y="1040" width="1150" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="a137" value="08  Chuyển tiếp và cổng phê duyệt" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=none;fillColor=#087E83;fontFamily=Arial;fontSize=18;fontColor=#FFFFFF;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1405" y="1147" width="1150" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="a138" value="BR43/50: mã địa bàn, legacy, cột/FK/API; BR45/51: thuế, file, gửi lại; BR48: lĩnh vực.&#10;BR46: sửa tin/duyệt lại; BR47: khóa NTD có tin/đơn, JWT sau mở khóa.&#10;Không tự APPROVED dữ liệu cũ, không sửa migration đã chạy; kiểm kê D00 trước SQL." style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=#D5E1EA;fillColor=#E4F6F4;fontFamily=Arial;fontSize=16;fontColor=#18334D;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1405" y="1183" width="1150" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="a139" value="Nguồn: Database Schema v4.0 §2–12 • SRS v2.0/phạm vi v4.0 • API Contract v4.0 • AGENTS.md v4.0.  Không có migration/test thực tế từ sơ đồ này." style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=17;fontColor=#536A7B;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="1440" width="2510" height="43" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
