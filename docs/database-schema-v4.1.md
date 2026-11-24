@@ -1,18 +1,18 @@
 # DATABASE SCHEMA VÀ QUY TRÌNH CẬP NHẬT DATABASE
 
-CDTN2 Nhóm 5 — Phiên bản 4.0
+CDTN2 Nhóm 5 — Phiên bản 4.1
 
 Nền tảng việc làm part-time cho sinh viên | Full E2E | Địa bàn chuẩn | Quản trị
 
 | Thuộc tính | Giá trị |
 | --- | --- |
-| Phiên bản | 4.0 — 24/11/2026 |
-| Căn cứ nghiệp vụ | SRS_Nhom5_v2.0_PhamVi_v4.0.docx: US01–US49, FR1–FR28, 36 MUST / 1 SHOULD / 12 WON’T, 119 AC. |
-| Căn cứ kế hoạch | Product_Backlog_Nhom5_SE_v4.0_US01-US49.xlsx; D07C, D15A–D15D là checkpoint đề xuất. |
-| Căn cứ kỹ thuật | Database Schema v3.0; API Contract v3.0 API-01–26 (nền); API v4.0 chưa cập nhật. |
-| Database | PostgreSQL 16; student_jobs_nhom5; schema public; Express + pg. |
-| Phạm vi | 11 bảng kế thừa + 2 bảng địa bàn dự kiến = 13; phương án danh mục lĩnh vực riêng thêm 1 bảng, tổng 14 nếu được duyệt. schema_migrations không tính. |
-| Tình trạng | Thiết kế mục tiêu tích hợp; tên cột mới, kiểu mã, FK mới và chính sách chuyển tiếp chờ phê duyệt. Chưa chạy migration, chưa có kết quả kiểm thử DB. |
+| Phiên bản | 4.1 — 24/11/2026 |
+| Căn cứ nghiệp vụ | SRS_Nhom5_v2.1_PhamVi_v4.1.docx: US01–US49, FR1–FR28, 35 MUST / 1 SHOULD / 13 WON’T, 119 mã AC (115 áp dụng: 113 MUST, 2 SHOULD). |
+| Căn cứ kế hoạch | Product_Backlog_Nhom5_SE_v4.1_US01-US49.xlsx; 24 đợt triển khai, D15A ngoài MVP. |
+| Căn cứ kỹ thuật | Database Schema v3.0/v4.0; API Contract v4.1; quyết định D00 về phạm vi và BR v4.1. |
+| Database | PostgreSQL 16; DB đích student_jobs_nhom5_v4 (sao chép từ student_jobs_nhom5); schema public; Express + pg. |
+| Phạm vi | 11 bảng nghiệp vụ kế thừa + 2 bảng địa bàn = 13; schema_migrations là bảng kỹ thuật, không tính. |
+| Tình trạng | Thiết kế mục tiêu đã đồng bộ BR được duyệt; chưa chạy migration v4.1, chưa kiểm thử runtime. Cần đối chiếu schema/checksum/seed thực tế. |
 
 ### Mục lục
 
@@ -22,18 +22,18 @@ Nền tảng việc làm part-time cho sinh viên | Full E2E | Địa bàn chu�
 | 4 | Từ điển dữ liệu đầy đủ, tích hợp cột mới |
 | 5–7 | Ràng buộc, chỉ mục, thời gian, Matching và giao dịch |
 | 8–9 | Migration, bảo toàn dữ liệu và kịch bản kiểm thử |
-| 10–12 | Truy vết, bàn giao, SQL tham chiếu và cổng phê duyệt |
+| 10–12 | Truy vết, bàn giao, SQL tham chiếu và kiểm chứng kỹ thuật |
 
 ## 1. Mục đích và căn cứ
 
-Đây là bản thiết kế dữ liệu v4.0 thay thế bản thiết kế v3.0 về phạm vi yêu cầu. Các bảng và quy tắc còn phù hợp được giữ ngay trong nội dung chính; không cần tra phụ lục ghi đè. Mọi cột hoặc bảng ghi “Đề xuất v4” là thiết kế chờ xác nhận, không phải schema đã tồn tại. Không dùng tài liệu này như bằng chứng DB hiện hành hoặc hợp đồng API mới đã duyệt.
+Đây là thiết kế dữ liệu v4.1 thay thế v4.0. Các quy tắc còn phù hợp được giữ trực tiếp trong nội dung chính. Cột mới là mục tiêu triển khai, không phải bằng chứng đã tồn tại. US46/FR24/UC20/AC24.* và D15A ngoài MVP; không tạo cấu trúc xác minh NTD.
 
 | Nguồn | Nội dung kế thừa / cập nhật |
 | --- | --- |
-| SRS v2.0, phạm vi v4.0 | FR1–28, BR42–51, NFR6; mở rộng Admin, địa bàn, đăng ký NTD, bảo mật. |
-| Product Backlog v4.0 | US40/41 chuyển MUST; US46–48 MUST, US49 SHOULD; mã Dxx theo Roadmap Dxx. |
+| SRS v2.1, phạm vi v4.1 | FR1–28 (FR24 ngoài MVP), BR43/46/47/48/50/51 đã chốt, NFR6; quản trị, địa bàn, hồ sơ NTD. |
+| Product Backlog v4.1 | US40/41/47/48 MUST, US46 WON’T, US49 SHOULD; 24 Dxx. |
 | Database Schema v3.0 | Giữ 11 bảng, các cột, ca, CV, Matching, vòng đời và hủy tin. |
-| API Contract v3.0 | API-01–26 là baseline; API Admin và địa bàn cần đặc tả v4.0 riêng; không tự cấp mã mới. |
+| API Contract v4.1 | API-01–26 giữ mã/method/URL; 27–29,34–42 còn phạm vi; 30–33 ngoài MVP. |
 | Quy tắc công nghệ | React/Vite, Express/Node, pg, PostgreSQL, JWT; ID BIGINT truyền chuỗi; salary_unit HOUR/DAY/SHIFT/MONTH; PDF CV tối đa 5 MiB. |
 
 Không xây thanh toán, tính lương, chấm công, chat, kho CV hoặc hạn mức tuyển. Gộp Trang chủ và khôi phục route sau đăng nhập không cần bảng riêng.
@@ -44,20 +44,19 @@ Không xây thanh toán, tính lương, chấm công, chat, kho CV hoặc hạn 
 | --- | --- | --- | --- |
 | 01 | users | Tài khoản, role, khóa/mở khóa | Mở rộng V001 |
 | 02 | student_profiles | Hồ sơ sinh viên dùng chung user_id | Giữ từ V001 |
-| 03 | employer_profiles | Hồ sơ NTD, địa bàn, minh chứng, xác minh | Mở rộng V001 |
+| 03 | employer_profiles | Hồ sơ NTD thông thường, lĩnh vực, địa bàn, logo tùy chọn | Mở rộng V001 |
 | 04 | job_categories | Danh mục ngành nghề và trạng thái sử dụng | Mở rộng V001 |
 | 05 | job_posts | Tin, địa bàn, kiểm duyệt, lịch, vòng đời, hủy | Mở rộng V002 |
-| 06 | job_time_slots | Ca WEEKLY hoặc ONE_TIME, 1 ca đêm = 1 bản ghi | Bổ sung mới D07A |
-| 07 | student_availability_slots | Lịch rảnh tuần 0–21 khoảng | Bổ sung mới D07B |
+| 06 | job_time_slots | Ca WEEKLY hoặc ONE_TIME, 1 ca đêm = 1 bản ghi | Kế thừa V006; D07A kiểm chứng |
+| 07 | student_availability_slots | Lịch rảnh tuần 0–21 khoảng | Kế thừa V006; D07B kiểm chứng |
 | 08 | applications | Đơn + PDF + 5 trạng thái + lịch sử hủy | Mở rộng V003 |
-| 09 | application_selected_slots | Liên kết ca SV đã chọn với đơn | Bổ sung mới khi làm ứng tuyển |
+| 09 | application_selected_slots | Liên kết ca SV đã chọn với đơn | Kế thừa V006 |
 | 10 | reviews | Hai chiều trên application được duyệt | Giữ từ V004 |
-| 11 | notifications | Thông báo trong web gắn đơn | Bổ sung nếu DB chưa có |
-| 12 | administrative_provinces | Danh mục mã tỉnh/thành | Đề xuất v4 |
-| 13 | administrative_wards | Danh mục mã phường/xã/đặc khu | Đề xuất v4 |
-| 14 (điều kiện) | business_industries | Lĩnh vực hoạt động NTD | Đề xuất tách riêng, chưa chốt BR48 |
+| 11 | notifications | Thông báo trong web gắn đơn | Kế thừa V006 |
+| 12 | administrative_provinces | Danh mục mã tỉnh/thành | Mới v4.1 |
+| 13 | administrative_wards | Danh mục mã phường/xã/đặc khu | Mới v4.1 |
 
-schema_migrations là bảng kỹ thuật, không tính vào 13 bảng mục tiêu (14 nếu danh mục riêng được duyệt). Dashboard dùng truy vấn, không tạo bảng thống kê. Không có bảng payments, payrolls, timekeeping, chats, complaints, job_quota hoặc cvs riêng.
+schema_migrations là bảng kỹ thuật, không tính vào 13 bảng nghiệp vụ. BR48 dùng chung job_categories; không tạo bảng business_industries. Dashboard dùng truy vấn, không tạo bảng thống kê. Không có payments, payrolls, timekeeping, chats, complaints, job_quota hoặc cvs riêng.
 
 ### 2.1. Quan hệ ERD logic
 
@@ -75,8 +74,8 @@ schema_migrations là bảng kỹ thuật, không tính vào 13 bảng mục ti�
 | applications, users | notifications | application_id, recipient_id; 1 đơn có N thông báo |
 | administrative_provinces | administrative_wards | province_code → administrative_provinces.province_code; 1 tỉnh có N phường |
 | administrative_provinces, administrative_wards | employer_profiles, job_posts | FK tỉnh và FK ghép (province_code, ward_code) → wards(province_code, ward_code); mã NULL chỉ chuyển tiếp dữ liệu cũ |
-| users | users, employer_profiles, job_posts | FK actor Admin: locked_by, unlocked_by, verified_by, moderated_by; kiểm tra role ở Service |
-| business_industries (điều kiện) | employer_profiles | industry_id → industry_id nếu chọn danh mục riêng; nếu dùng chung trỏ job_categories.category_id, không tạo cả hai FK |
+| users | users, job_posts | FK actor Admin: locked_by, unlocked_by, moderated_by; kiểm tra role ở Service |
+| job_categories | employer_profiles | industry_id → job_categories.category_id; dùng chung danh mục theo BR48 |
 
 Các FK sử dụng ON DELETE RESTRICT, không hỗ trợ xóa cứng tin/đơn/tài khoản. Quy tắc cùng tin giữa applications và job_time_slots trong bảng liên kết được kiểm tra ở Service khi transaction; hai FK đơn lẻ không tự bảo đảm hai bên thuộc cùng một job.
 
@@ -84,16 +83,16 @@ Các FK sử dụng ON DELETE RESTRICT, không hỗ trợ xóa cứng tin/đơn/
 
 | Nhóm | Quy ước chuẩn |
 | --- | --- |
-| DB và tên | Database student_jobs_nhom5; schema public; bảng/cột snake_case, không dấu. |
+| DB và tên | DB đích student_jobs_nhom5_v4; DB nguồn student_jobs_nhom5 bảo toàn; schema public; snake_case. |
 | ID và khóa | BIGINT; PK identity cho thực thể độc lập; hồ sơ dùng chung user_id; trả API dưới dạng chuỗi tránh mất chính xác JS. |
 | Mốc thời gian | created_at/updated_at/applied_at/decided_at/completed_at/cancelled_at và ONE_TIME start_at/end_at: TIMESTAMPTZ. |
 | Ngày / giờ tuần | schedule_start_date/end_date: DATE; WEEKLY day_of_week SMALLINT 1..7, start_time/end_time TIME không timezone. |
 | Múi giờ | Xử lý ngày hủy và đối chiếu ca theo Asia/Ho_Chi_Minh; JSON timestamp ISO 8601 Z; ONE_TIME input có offset hoặc Z. |
 | Lương mô tả | NUMERIC(12,2) VND; salary_unit HOUR/DAY/SHIFT/MONTH; không là dữ liệu lương thực nhận. |
 | Giá trị rỗng | NULL cho dữ liệu chưa có; không đoán schedule_type của tin legacy từ work_time TEXT. |
-| Quyền | Role từ DB/JWT; kiểm tra account_status trong DB cho mọi API bảo vệ; quyền xác minh và kiểm duyệt độc lập với role. |
-| Mã địa bàn | Đề xuất VARCHAR(16) giữ số 0 đầu; mã chuỗi theo nguồn đã xác minh, không ép thành integer. Chốt độ dài/nguồn trước migration. |
-| Trạng thái mới | VARCHAR + CHECK theo cách đang dùng; không đổi sang PostgreSQL ENUM riêng khi chưa chốt. |
+| Quyền | Role hiện tại từ DB; mọi API bảo vệ kiểm account_status và token_version. Kiểm duyệt tin độc lập với role. |
+| Mã địa bàn | VARCHAR(16), giữ số 0 đầu; seed nội bộ từ danh mục chính thức, xác minh nguồn/phiên bản/ngày hiệu lực trước seed. |
+| Trạng thái mới | VARCHAR + CHECK theo cách đang dùng; không đổi sang PostgreSQL ENUM riêng. |
 
 ### 3.1. Máy trạng thái tin và đơn
 
@@ -102,16 +101,15 @@ Các FK sử dụng ON DELETE RESTRICT, không hỗ trợ xóa cứng tin/đơn/
 | job_posts.status | RECRUITING, FILLED, COMPLETED, EXPIRED, CANCELLED | Chỉ RECRUITING nhận đơn. FILLED không đồng nghĩa COMPLETED. CANCELLED chỉ NTD trước ngày ca đầu. |
 | applications.status | PENDING, APPROVED, REJECTED, JOB_EXPIRED, JOB_CANCELLED | JOB_EXPIRED: PENDING hết cơ hội ca SV chọn; JOB_CANCELLED: hủy tin, được ghi đè kết quả cũ nhưng lưu dấu vết. |
 | applications.status_before_cancel | NULL hoặc PENDING, APPROVED, REJECTED, JOB_EXPIRED | Chỉ có dữ liệu khi status=JOB_CANCELLED; giữ lại decided_at cũ. |
-| users.account_status | ACTIVE, LOCKED | Khóa chặn API bảo vệ kể cả JWT cũ; mở khóa không tự duyệt NTD/tin. BR47 còn mở. |
-| employer_profiles.verification_status | PENDING, APPROVED, REJECTED | NTD mới PENDING; chỉ ACTIVE + APPROVED được tạo tin. BR45 còn mở về gửi lại và sửa hồ sơ đã duyệt. |
-| job_posts.moderation_status | PENDING, APPROVED, REJECTED | Tin mới PENDING, status=RECRUITING; quyết định kiểm duyệt không tự đổi vòng đời/đơn. BR46 còn mở. |
+| users.account_status | ACTIVE, LOCKED | Chặn login/API bảo vệ khi khóa; token trước khóa vô hiệu cả sau mở khóa (BR47). |
+| job_posts.moderation_status | PENDING, APPROVED, REJECTED | Tin mới PENDING, status=RECRUITING; quyết định kiểm duyệt không tự đổi vòng đời/đơn (BR46). |
 | job_categories.is_active | TRUE, FALSE | FALSE không chọn mới, không xóa quan hệ lịch sử. |
 
 Chỉ PENDING được chuyển APPROVED/REJECTED/JOB_EXPIRED. Khi hủy hợp lệ, mọi trạng thái đơn khác JOB_CANCELLED đều thành JOB_CANCELLED. Không có JOB_FILLED, NO_RESPONSE hay COMPLETED ở applications.status.
 
-## 4. Từ điển dữ liệu mục tiêu — 13 bảng + 1 phương án có điều kiện
+## 4. Từ điển dữ liệu mục tiêu — 13 bảng nghiệp vụ
 
-Các kiểu/ràng buộc của cột nền giữ nguyên. Cột mới ghi “Đề xuất v4”; NULL trong bảng là mục tiêu sau khi hoàn tất chuyển tiếp, trừ nơi chỉ rõ ngoại lệ legacy. Không thêm NOT NULL cứng vào dữ liệu cũ khi chưa có kiểm kê và phương án chuyển tiếp.
+Giữ các kiểu/ràng buộc nền; cột mới v4.1 là mục tiêu sau chuyển tiếp. Không thêm NOT NULL cứng vào dữ liệu cũ chưa được kiểm kê.
 
 ### 4.1. users
 
@@ -124,14 +122,15 @@ Mở rộng baseline V001; tài khoản ba vai trò, không đăng ký ADMIN cô
 | password_hash | VARCHAR(255) | Không | Không trả JSON hoặc lưu mật khẩu rõ. |
 | role | VARCHAR(16) | Không | CHECK IN ('STUDENT','EMPLOYER','ADMIN'). |
 | created_at | TIMESTAMPTZ | Không | DEFAULT CURRENT_TIMESTAMP. |
-| account_status | VARCHAR(16) | Không | Đề xuất v4; DEFAULT ACTIVE; CHECK ACTIVE/LOCKED. |
-| locked_at | TIMESTAMPTZ | Có | Đề xuất v4; thời điểm lần khóa gần nhất. |
-| locked_by | BIGINT | Có | Đề xuất v4; FK users.user_id; Admin thực hiện lần khóa gần nhất. |
-| lock_reason | TEXT | Có | Đề xuất v4; lý do lần khóa gần nhất, trim không rỗng khi khóa. |
-| unlocked_at | TIMESTAMPTZ | Có | Đề xuất v4; thời điểm lần mở khóa gần nhất. |
-| unlocked_by | BIGINT | Có | Đề xuất v4; FK users.user_id; Admin thực hiện lần mở khóa gần nhất. |
+| account_status | VARCHAR(16) | Không | Mới v4.1; DEFAULT ACTIVE; CHECK ACTIVE/LOCKED. |
+| locked_at | TIMESTAMPTZ | Có | Mới v4.1; thời điểm lần khóa gần nhất. |
+| locked_by | BIGINT | Có | Mới v4.1; FK users.user_id; Admin thực hiện lần khóa gần nhất. |
+| lock_reason | TEXT | Có | Mới v4.1; lý do lần khóa gần nhất, trim không rỗng khi khóa. |
+| unlocked_at | TIMESTAMPTZ | Có | Mới v4.1; thời điểm lần mở khóa gần nhất. |
+| unlocked_by | BIGINT | Có | Mới v4.1; FK users.user_id; Admin thực hiện lần mở khóa gần nhất. |
+| token_version | INTEGER | Không | DEFAULT 0; CHECK token_version >= 0; phiên bản thu hồi JWT theo BR47; tăng nguyên tử khi khóa. Không trả DTO công khai. |
 
-• Ba trường locked_at/by/reason cùng có hoặc cùng NULL; unlocked_at/by cùng có hoặc cùng NULL. LOCKED phải có đủ dữ liệu khóa. ACTIVE mới chưa từng khóa có metadata NULL; sau mở khóa giữ lần khóa gần nhất và ghi lần mở khóa. Không cho Admin khóa Admin qua chức năng FR26; kiểm tra actor và trạng thái cũ trong transaction. Đây là metadata lần gần nhất, không phải nhật ký mọi lần; nếu cần audit đầy đủ phải duyệt thiết kế riêng. JWT cũ bị từ chối trong thời gian LOCKED; có cần vô hiệu vĩnh viễn sau mở khóa hay không chưa đặc tả, không tự thêm token_version.
+• locked_at/by/reason cùng có hoặc cùng NULL; unlocked_at/by cùng có hoặc cùng NULL. LOCKED cần đủ metadata khóa. ACTIVE mới metadata NULL; mở khóa giữ lần khóa gần nhất, ghi lần mở khóa. Admin không khóa Admin. Khi ACTIVE→LOCKED, tăng token_version cùng transaction; khi mở khóa giữ version mới. JWT claim token_version phải là số nguyên không âm và khớp DB; token thiếu claim sau rollout bị từ chối 401 INVALID_TOKEN, token của tài khoản LOCKED bị chặn 403 ACCOUNT_LOCKED. Login mới cấp token với version hiện tại. Kiểm tra lại sau lấy khóa ở luồng ghi; metadata không phải audit log đầy đủ.
 
 ### 4.2. student_profiles
 
@@ -157,39 +156,34 @@ Một hồ sơ cho tài khoản EMPLOYER; liên kết chủ sở hữu job_posts
 | phone | VARCHAR(11) | Có (legacy) | Bắt buộc với NTD mới; 10–11 chữ số, không kiểu số. |
 | introduction | TEXT | Có | Giới thiệu, tối đa 5.000 ở Service. |
 | updated_at | TIMESTAMPTZ | Không | DEFAULT CURRENT_TIMESTAMP. |
-| business_type | VARCHAR(20) | Có (legacy) | Đề xuất v4; COMPANY/INDIVIDUAL_SHOP; bắt buộc NTD mới. |
-| tax_code | VARCHAR(50) | Có | Đề xuất v4; điều kiện COMPANY bắt buộc, cửa hàng tùy chọn đang chờ BR45; giữ chuỗi, chưa đặt UNIQUE. |
-| industry_id | BIGINT | Có (legacy) | Đề xuất v4; bắt buộc NTD mới; FK đích chờ BR48. |
-| province_code | VARCHAR(16) | Có (legacy) | Đề xuất v4; FK administrative_provinces; bắt buộc NTD mới. |
-| ward_code | VARCHAR(16) | Có (legacy) | Đề xuất v4; FK ghép cùng province_code; bắt buộc NTD mới. |
-| address_detail | VARCHAR(255) | Có (legacy) | Đề xuất v4; trim không rỗng với NTD mới. |
-| logo_storage_key | VARCHAR(255) | Có | Đề xuất v4; khóa file do server tạo, không phải URL do client nhập. |
-| verification_doc_key | VARCHAR(255) | Có (legacy) | Đề xuất v4; bắt buộc khi đăng ký/gửi duyệt mới; lưu private storage, không trả raw key. |
-| website_url | VARCHAR(500) | Có | Đề xuất v4; URL http/https hợp lệ; không tự tải link từ server. |
-| verification_status | VARCHAR(16) | Không (sau chuyển tiếp) | Đề xuất v4; DEFAULT PENDING cho hồ sơ mới; CHECK PENDING/APPROVED/REJECTED. |
-| reject_reason | TEXT | Có | Đề xuất v4; bắt buộc khi REJECTED, không có ở PENDING/APPROVED. |
-| verified_at | TIMESTAMPTZ | Có | Đề xuất v4; thời điểm Admin ra quyết định APPROVED/REJECTED (không phải chỉ khi duyệt thành công). |
-| verified_by | BIGINT | Có | Đề xuất v4; FK users.user_id, role ADMIN kiểm ở Service. |
+| business_type | VARCHAR(20) | Có (legacy) | Mới v4.1; COMPANY/INDIVIDUAL_SHOP; bắt buộc NTD mới. |
+| tax_code | VARCHAR(50) | Có | Mới v4.1; tùy chọn mọi loại hình, chuỗi tối đa 50, không UNIQUE. |
+| industry_id | BIGINT | Có (legacy) | Mới v4.1; bắt buộc NTD mới; FK job_categories.category_id, chọn mới danh mục active. |
+| province_code | VARCHAR(16) | Có (legacy) | Mới v4.1; FK administrative_provinces; bắt buộc NTD mới. |
+| ward_code | VARCHAR(16) | Có (legacy) | Mới v4.1; FK ghép cùng province_code; bắt buộc NTD mới. |
+| address_detail | VARCHAR(255) | Có (legacy) | Mới v4.1; trim không rỗng với NTD mới. |
+| logo_storage_key | VARCHAR(255) | Có | Mới v4.1; khóa file do server tạo, không phải URL do client nhập. |
+| website_url | VARCHAR(500) | Có | Mới v4.1; URL http/https hợp lệ; không tự tải link từ server. |
 
 • Giữ user_id là PK/FK, không tạo bảng employers hoặc đổi tên display_name/contact_name/phone/introduction. Không lưu email/password trong profile.
 
-• PENDING không có quyết định hiện tại: verified_at/by/reject_reason NULL. APPROVED cần actor và thời điểm, lý do từ chối NULL. REJECTED cần actor, thời điểm, lý do không rỗng. Hồ sơ mới đủ trường khi đăng ký; chỉ phê duyệt nếu hồ sơ và file còn hợp lệ. Quy tắc gửi lại/sửa hồ sơ đã duyệt chờ BR45, không tự reset metadata khi chưa chốt.
+• NTD đăng ký tài khoản ACTIVE và một hồ sơ hợp lệ, không có quy trình duyệt hồ sơ; không yêu cầu giấy tờ hoặc mã số thuế.
 
-• Mã địa bàn phải cùng quan hệ cha–con. Minh chứng không công khai; chỉ đúng chủ hồ sơ và Admin theo nhiệm vụ. Loại file, kích thước, thời hạn lưu/xóa chờ BR45/51. Không mặc định lấy CCCD. Logo hiển thị qua cơ chế cung cấp ảnh đã được duyệt; không dùng chung đường dẫn với minh chứng.
+• Mã địa bàn phải cùng quan hệ cha–con. Logo tùy chọn JPG/PNG/WebP ≤2 MiB, kiểm tra chữ ký file; lưu key do server tạo, đọc qua API-42; không lưu minh chứng NTD.
 
-• Lĩnh vực doanh nghiệp không mặc nhiên đồng nghĩa ngành nghề của tin. Xem mục 4.14 để chọn một FK, không triển khai cả hai.
+• Lĩnh vực doanh nghiệp dùng chung job_categories theo BR48; khi tạo/đổi industry_id chỉ chọn danh mục đang hoạt động; giữ FK lịch sử.
 
 ### 4.4. job_categories
 
-Danh mục lĩnh vực phục vụ API-07 và khóa ngoại của job_posts.
+Danh mục dùng chung cho ngành nghề tuyển dụng và lĩnh vực NTD (BR48); API-07 và API-29 đọc cùng nguồn.
 
 | Cột | Kiểu PostgreSQL | NULL | Khóa / ràng buộc / diễn giải |
 | --- | --- | --- | --- |
 | category_id | BIGINT | Không | PK, identity. |
 | name | VARCHAR(100) | Không | UNIQUE; CHECK trim không rỗng. |
-| is_active | BOOLEAN | Không | Đề xuất v4; DEFAULT TRUE; danh mục FALSE không chọn cho tin mới hoặc khi đổi danh mục. |
+| is_active | BOOLEAN | Không | Mới v4.1; DEFAULT TRUE; FALSE không chọn cho tin/hồ sơ mới hoặc khi đổi danh mục. |
 
-• API-07 giữ danh mục phục vụ lựa chọn; lịch sử tin join bằng category_id kể cả danh mục ngừng dùng. Không DELETE cứng danh mục có tham chiếu. Phạm vi trả danh mục Admin và lọc public sẽ chốt trong API Contract v4.0.
+• API-07 scope=selection chỉ active; scope=filter gồm cả inactive để lọc tin cũ. API-29 ánh xạ category_id → industry_id chỉ active. Admin 38–40 quản lý, kiểm trùng tên sau trim không phân biệt hoa/thường; đối chiếu trùng legacy trước unique index. Không DELETE cứng danh mục được tham chiếu.
 
 ### 4.5. job_posts
 
@@ -218,16 +212,16 @@ Giữ toàn bộ cột v3.0. Bổ sung mã địa bàn và kiểm duyệt; khôn
 | cancel_reason | TEXT | Có | NEW; lý do NTD nhập, bắt buộc nếu đã có bất kỳ đơn; chiều dài do API/service kiểm soát. |
 | created_at | TIMESTAMPTZ | Không | DEFAULT CURRENT_TIMESTAMP. |
 | updated_at | TIMESTAMPTZ | Không | DEFAULT CURRENT_TIMESTAMP; Service set khi UPDATE. |
-| province_code | VARCHAR(16) | Có (legacy) | Đề xuất v4; FK tỉnh, bắt buộc tin mới. |
-| ward_code | VARCHAR(16) | Có (legacy) | Đề xuất v4; FK ghép tỉnh/phường, bắt buộc tin mới. |
-| moderation_status | VARCHAR(16) | Không (sau chuyển tiếp) | Đề xuất v4; DEFAULT PENDING cho tin mới, CHECK PENDING/APPROVED/REJECTED. |
-| moderation_reason | TEXT | Có | Đề xuất v4; lý do từ chối bắt buộc khi REJECTED; NULL ở PENDING/APPROVED. |
-| moderated_at | TIMESTAMPTZ | Có | Đề xuất v4; mốc quyết định Admin APPROVED/REJECTED. |
-| moderated_by | BIGINT | Có | Đề xuất v4; FK users.user_id, role ADMIN kiểm ở Service. |
+| province_code | VARCHAR(16) | Có (legacy) | Mới v4.1; FK tỉnh, bắt buộc tin mới. |
+| ward_code | VARCHAR(16) | Có (legacy) | Mới v4.1; FK ghép tỉnh/phường, bắt buộc tin mới. |
+| moderation_status | VARCHAR(16) | Không (sau chuyển tiếp) | Mới v4.1; DEFAULT PENDING cho tin mới, CHECK PENDING/APPROVED/REJECTED. |
+| moderation_reason | TEXT | Có | Mới v4.1; lý do từ chối bắt buộc khi REJECTED; NULL ở PENDING/APPROVED. |
+| moderated_at | TIMESTAMPTZ | Có | Mới v4.1; mốc quyết định Admin APPROVED/REJECTED. |
+| moderated_by | BIGINT | Có | Mới v4.1; FK users.user_id, role ADMIN kiểm ở Service. |
 
-• Giữ city/location_detail để tương thích, city của tin mới lấy tên tỉnh chuẩn từ danh mục, không nhận hai nguồn dữ liệu mâu thuẫn; cách truyền API chờ chốt. Không đoán mã phường từ city/địa chỉ cũ. Tin legacy mã NULL không khớp lọc mã tương ứng; tin đủ điều kiện vẫn đọc được khi không lọc địa bàn.
+• Giữ city/location_detail; city tin mới do server lấy tên tỉnh chuẩn. Không đoán mã phường từ địa chỉ cũ. Tin legacy mã NULL không khớp lọc mã tương ứng; tin đủ điều kiện vẫn đọc được khi không lọc địa bàn.
 
-• Quyết định kiểm duyệt ghi actor, thời điểm; PENDING không có metadata quyết định hiện tại, APPROVED cần actor/thời điểm, REJECTED cần thêm lý do. Không dùng status=PENDING cho vòng đời tin. Mặc định Trang chủ/Matching/ứng tuyển chỉ xét APPROVED + RECRUITING + đủ điều kiện nhận đơn; tin chưa duyệt/từ chối không công khai. Chi tiết đã duyệt và lịch sử theo quyền. Chốt BR46/47 trước xử lý sửa lại/khóa NTD có tin đang hoạt động.
+• PENDING: metadata quyết định NULL; APPROVED: actor/thời điểm; REJECTED: thêm lý do. Công khai cần moderation_status=APPROVED và chủ tin EMPLOYER ACTIVE; danh sách mặc định/Matching/nhận đơn thêm RECRUITING và còn cơ hội ca (ngoại lệ legacy theo FR4, không Matching). Tin RECRUITING chưa có đơn sửa hợp lệ về PENDING, xóa metadata hiện tại; có bất kỳ đơn nào khóa toàn bộ sửa nội dung, không đổi vòng đời/đơn. BR47 ẩn tin NTD LOCKED; quyền đọc lịch sử riêng vẫn được bảo toàn.
 
 • Shape ngày hiệu lực: schedule_type=NULL → hai DATE NULL (tin legacy); ONE_TIME → hai DATE NULL; WEEKLY → start_date bắt buộc, end_date tùy chọn. Dữ liệu tin mới bắt buộc schedule_type và 1–21 ca (Service).
 
@@ -348,46 +342,34 @@ Giữ đúng cấu trúc tối thiểu 5 cột từ Schema v2.3 / API v3.0; khô
 
 • API-22 chỉ trả thông báo của user từ JWT; notifications giữ cả lịch sử thông báo dù đơn sau đó JOB_CANCELLED.
 
-### 4.12. administrative_provinces — đề xuất v4
+### 4.12. administrative_provinces — mới v4.1
 
 Danh mục địa bàn cấp tỉnh. Chỉ seed từ bộ mã/tên có nguồn, phiên bản và ngày hiệu lực đã được xác nhận; tài liệu này không cung cấp bộ dữ liệu địa giới chính thức.
 
 | Cột | Kiểu PostgreSQL | NULL | Khóa / ràng buộc / diễn giải |
 | --- | --- | --- | --- |
-| province_code | VARCHAR(16) | Không | PK, mã chuỗi, giữ số 0 đầu; độ dài đề xuất. |
+| province_code | VARCHAR(16) | Không | PK, mã chuỗi giữ số 0 đầu. |
 | name | VARCHAR(200) | Không | Tên chính thức, trim không rỗng. |
 | source_version | VARCHAR(100) | Không | Phiên bản bộ dữ liệu đã nhập; không tự tạo mã. |
-| is_active | BOOLEAN | Không | DEFAULT TRUE; đề xuất giữ mã cũ để đọc lịch sử, không chọn mới. |
+| is_active | BOOLEAN | Không | DEFAULT TRUE; giữ mã cũ để đọc lịch sử, không chọn mới. |
 
-### 4.13. administrative_wards — đề xuất v4
+### 4.13. administrative_wards — mới v4.1
 
 Danh mục cấp phường/xã/đặc khu; không thêm bảng quận/huyện vào mô hình hai cấp.
 
 | Cột | Kiểu PostgreSQL | NULL | Khóa / ràng buộc / diễn giải |
 | --- | --- | --- | --- |
-| ward_code | VARCHAR(16) | Không | PK đề xuất (cần kiểm chứng mã duy nhất toàn bộ nguồn). |
+| ward_code | VARCHAR(16) | Không | PK; kiểm chứng mã duy nhất toàn bộ nguồn trước seed; nếu không đạt phải báo thay đổi PK. |
 | province_code | VARCHAR(16) | Không | FK administrative_provinces.province_code. |
 | name | VARCHAR(200) | Không | Tên chính thức; không UNIQUE toàn quốc. |
 | source_version | VARCHAR(100) | Không | Phiên bản bộ dữ liệu đã nhập. |
 | is_active | BOOLEAN | Không | DEFAULT TRUE; không xóa địa bàn đang tham chiếu. |
 
-• UNIQUE(province_code, ward_code) phục vụ FK ghép tại employer_profiles và job_posts. FK ghép phải ngăn phường không thuộc tỉnh. Có thể dùng MATCH SIMPLE để giữ tin legacy chỉ biết tỉnh; CHECK ward_code IS NULL OR province_code IS NOT NULL. Khi đăng ký/tạo tin mới Service bắt buộc đủ cả hai mã hoạt động, không nhận tên tự nhập. Chốt chính sách hiệu lực và nhập dữ liệu trước SQL; nếu nguồn không có ward_code duy nhất toàn quốc cần duyệt lại PK ghép.
+• UNIQUE(province_code, ward_code) phục vụ FK ghép tại employer_profiles và job_posts; MATCH SIMPLE cho legacy, CHECK ward_code IS NULL OR province_code IS NOT NULL. Hồ sơ/tin mới cần đủ hai mã active. Kiểm chứng phiên bản nguồn trước seed; nếu mã không duy nhất toàn quốc phải báo trước khi đổi PK.
 
-• Lọc địa bàn: một tập điều kiện dạng các nhóm tỉnh, mỗi nhóm chọn toàn tỉnh hoặc tập phường; OR giữa nhóm, AND với keyword/ngành/lương/lịch. Không gộp hai mảng mã độc lập nếu làm mất nghĩa toàn tỉnh A và một số phường tỉnh B. Lọc toàn tỉnh có thể khớp bản ghi có province_code đáng tin và ward_code NULL; lọc phường cần đủ mã. API encoding chờ chốt.
+• Lọc nhóm tỉnh (toàn tỉnh hoặc danh sách phường), OR giữa nhóm, AND với bộ lọc khác. Không gộp hai mảng phẳng; legacy chỉ tỉnh đáng tin có thể khớp toàn tỉnh. API-09/26 dùng locations JSON text URL-encoded; giới hạn 34 nhóm và 200 mã phường.
 
-### 4.14. business_industries — phương án có điều kiện
-
-BR48 chưa xác định dùng riêng hay chung danh mục. Khuyến nghị riêng vì lĩnh vực hoạt động của đơn vị và ngành tuyển dụng không nhất thiết giống nhau; chỉ tạo bảng này sau khi người dùng xác nhận.
-
-| Cột | Kiểu PostgreSQL | NULL | Khóa / ràng buộc / diễn giải |
-| --- | --- | --- | --- |
-| industry_id | BIGINT | Không | PK, identity. |
-| name | VARCHAR(100) | Không | UNIQUE, trim không rỗng. |
-| is_active | BOOLEAN | Không | DEFAULT TRUE; giữ quan hệ lịch sử. |
-
-Nếu dùng riêng: employer_profiles.industry_id FK bảng này; cần danh mục seed và phương thức đọc được chốt. Nếu dùng chung: employer_profiles.industry_id FK job_categories.category_id; không tạo business_industries. FR27 yêu cầu quản lý danh mục ngành nghề, không mặc nhiên yêu cầu CRUD lĩnh vực doanh nghiệp riêng.
-
-Dashboard FR28 không có bảng riêng: tính sáu chỉ số từ users, employer_profiles, job_posts, applications. Không lưu số đếm giả, không bổ sung bảng phân tích.
+Dashboard FR28 không có bảng riêng: năm số đếm từ users, job_posts, applications. Không lưu số đếm giả.
 
 ## 5. Ràng buộc quan hệ, quyền và index
 
@@ -396,8 +378,8 @@ Dashboard FR28 không có bảng riêng: tính sáu chỉ số từ users, emplo
 | Lớp | Bảo đảm | Không được nhầm |
 | --- | --- | --- |
 | PostgreSQL | PK/FK/NOT NULL/UNIQUE/CHECK từng hàng, enum 5 trạng thái, shape ca, tính hợp lệ ngày và giờ, ràng buộc CV metadata. | CHECK không đủ kiểm tra overlap toàn lịch, số lượng tối đa 21, quyền sở hữu hoặc status liên bảng. |
-| Validator / Service | role, account_status, chủ tin, xác minh/kiểm duyệt, quyền file, địa bàn hoạt động, lịch cùng tin, ca tương lai, overlap, hạn hủy, chuyển trạng thái hợp lệ. | Không chỉ ẩn nút ở FE; API phải tự kiểm tra lại. |
-| Transaction / Lock | Giữ thứ tự job_posts trước applications; bổ sung khóa user/profile trước job nếu liên quan xác minh/khóa tài khoản. Kiểm tra lại quyền và trạng thái sau khóa. | Tạo notification sai dù UPDATE thất bại là lỗi nghiệp vụ. |
+| Validator / Service | role, account_status, token_version, chủ tin, kiểm duyệt, quyền file, địa bàn hoạt động, lịch cùng tin, ca tương lai, overlap, hạn hủy, chuyển trạng thái hợp lệ. | BE kiểm tra lại, không chỉ ẩn nút FE. |
+| Transaction / Lock | users theo ID tăng → employer_profiles → danh mục → job_posts → applications theo ID tăng; kiểm lại quyền/trạng thái sau khóa. | Worker chỉ khóa job rồi đơn, không khóa ngược. |
 | Worker backend | Tự JOB_EXPIRED theo ca SV chọn; tự FILLED/EXPIRED sau ca cuối toàn tin; idempotent. | Không phụ thuộc browser hay tự chuyển COMPLETED. |
 
 ### 5.2. Chỉ mục cần có, không trùng index nền V005
@@ -418,7 +400,6 @@ Dashboard FR28 không có bảng riêng: tính sáu chỉ số từ users, emplo
 | idx_notifs_application | notifications(application_id) | Mới nếu thiếu |
 | idx_jobs_geo_v4 | job_posts(province_code,ward_code) | Đề xuất; lọc theo tỉnh/phường, đo EXPLAIN. |
 | idx_jobs_moderation_status_created_v4 | job_posts(moderation_status,status,created_at DESC,job_id DESC) | Đề xuất; hàng đợi duyệt và danh sách công khai. |
-| idx_employer_verification_v4 | employer_profiles(verification_status,user_id) | Đề xuất; hàng đợi NTD. |
 | idx_users_role_account_status_v4 | users(role,account_status,user_id) | Đề xuất; Admin lọc. |
 | idx_wards_province_v4 | administrative_wards(province_code,ward_code) | Không tạo trùng UNIQUE ghép; dùng index của UNIQUE. |
 
@@ -464,31 +445,30 @@ Matching không chặn tự tìm tin hoặc API-13 chọn ca; không tự kiểm
 
 | Sự kiện | Cách xử lý trong BE/DB | API / truy vết |
 | --- | --- | --- |
-| Đăng ký | INSERT users + đúng 1 profile theo role; NTD đủ trường và file, verification_status=PENDING; COMMIT cùng nhau, sai rollback và dọn file mới. | API-01 / US01–02 |
-| Đăng tin | Khóa user/profile NTD, ACTIVE+APPROVED, danh mục và địa bàn hợp lệ; INSERT job_posts (RECRUITING/PENDING) + 1–21 ca cùng transaction. | API-08 / US06,43 |
-| Sửa tin | Chủ tin, RECRUITING; có bất kỳ application thì khóa lịch; kiểm duyệt lại theo BR46 sau khi chốt; không xóa lịch sử. | API-11 / US07 |
+| Đăng ký | INSERT users ACTIVE + đúng 1 profile theo role; logo tùy chọn; rollback cả DB và dọn file mới nếu lỗi. | API-01 / US01–02 |
+| Đăng tin | Khóa user/profile NTD, role EMPLOYER + ACTIVE, token_version hợp lệ, danh mục và địa bàn active; INSERT job RECRUITING/PENDING + 1–21 ca cùng transaction. | API-08 / US06,43 |
+| Sửa tin | Chủ tin ACTIVE, RECRUITING, chưa có bất kỳ đơn; lưu job/ca nguyên tử, set PENDING và xóa metadata quyết định hiện tại; có đơn chặn toàn bộ sửa nội dung. | API-11 / US07 |
 | Thay lịch rảnh | Xác thực STUDENT; kiểm tra toàn bộ 0–21 slot; lock profile, DELETE/INSERT cùng transaction. | API-25 / US42 |
 | Nộp đơn | Khóa và kiểm tra lại quyền, chủ tin và tin; APPROVED + RECRUITING + đủ điều kiện nhận đơn; INSERT application + selected_slots; bù trừ file CV nếu lỗi. | API-13 / US12 |
-| Duyệt / từ chối | Khóa tin rồi đơn; từ PENDING; duyệt nếu còn ca tương lai; nếu duyệt muộn xác nhận; UPDATE decided_at + INSERT notification cùng transaction. | API-18 / US14–15 |
+| Duyệt / từ chối | Khóa user liên quan rồi job/đơn; chỉ PENDING; không duyệt mới SV LOCKED; duyệt khi còn ca tương lai, xác nhận duyệt muộn; ghi quyết định + notification cùng transaction. | API-18 / US14–15 |
 | JOB_EXPIRED | Worker khóa tin rồi đơn; nếu PENDING hết mọi cơ hội trong các ca đã chọn, chuyển JOB_EXPIRED + INSERT notification; lần chạy lại không trùng. | Worker / US16,22 |
 | Đóng tuyển thủ công | Khóa tin → phải ≥1 APPROVED, 0 PENDING; đổi RECRUITING→FILLED. KHÔNG tự từ chối đơn còn chờ. | API-19 / US18 |
-| Tin tự hết lịch | Worker xử lý các đơn PENDING hết cơ hội, rồi nếu RECRUITING và sau ca cuối: APPROVED ≥1 → FILLED, =0 → EXPIRED; thông báo SV bị ảnh hưởng cùng transaction theo FR8, tránh gửi trùng; chi tiết sự kiện chốt ở API v4. | Worker / US18 |
+| Tin tự hết lịch | Worker xử lý các đơn PENDING hết cơ hội, rồi nếu RECRUITING và sau ca cuối: APPROVED ≥1 → FILLED, =0 → EXPIRED; thông báo SV bị ảnh hưởng cùng transaction theo FR8, tránh gửi trùng; chi tiết sự kiện theo API v4.1. | Worker / US18 |
 | Hủy tin | Khóa tin rồi tất cả đơn; so sánh local DATE trước ngày ca đầu; lý do bắt buộc nếu có đơn; lưu status_before_cancel, JOB_CANCELLED toàn bộ, notifications từng SV và job CANCELLED cùng transaction. | API-19 / US45 |
 | Xác nhận hoàn thành | Chỉ chủ tin, từ FILLED→COMPLETED sau công việc thực tế; completed_at, không tự động. | API-19 / US19 |
 | Đánh giá | Chỉ APPROVED + COMPLETED; một người 1 review/đơn; Service suy reviewer/reviewee theo quan hệ. | API-20–21 / US20–21 |
-| Admin xác minh | Khóa user/profile; actor ADMIN ACTIVE; đối tượng PENDING, hồ sơ/file hợp lệ khi duyệt; ghi status, actor, thời điểm, lý do trong cùng transaction. | FR24 / US46; API chờ chốt |
-| Admin duyệt tin | Khóa user/profile chủ tin rồi job; kiểm tra Admin, chủ tin đủ điều kiện, tin PENDING và còn hợp lệ; ghi metadata, không đổi job.status/applications. | FR25 / US47; API chờ chốt |
-| Admin khóa/mở khóa | Khóa hàng users; chỉ SV/NTD, kiểm tra trạng thái cũ; cập nhật account_status và metadata cùng transaction. Tác động tin/đơn theo BR47 chưa chốt. | FR26 / US40–41; API chờ chốt |
-| Admin danh mục | Khóa category; tạo/sửa/ngừng dùng theo quyền, kiểm tra trùng; không xóa FK lịch sử. Tạo/đổi tin kiểm tra category đang hoạt động trong transaction. | FR27 / US48; API chờ chốt |
-| Dashboard | SELECT COUNT theo phạm vi FR28 trong cùng snapshot đọc nếu cần nhất quán; không ghi DB. | FR28 / US49; API chờ chốt |
+| Admin duyệt tin | Khóa user/profile chủ tin rồi job; Admin ACTIVE, tin PENDING; khi APPROVED chủ tin ACTIVE và đủ điều kiện hiện tại; ghi metadata, không đổi vòng đời/đơn. | FR25 / US47 / API-36 |
+| Admin khóa/mở khóa | Khóa users; chỉ SV/NTD, kiểm tra trạng thái cũ; khóa tăng token_version, ghi metadata cùng transaction; mở giữ version. Ẩn tin, chặn đơn mới/thao tác thủ công khi NTD LOCKED; giữ lịch sử và worker. | FR26 / US40–41 / API-37 |
+| Admin danh mục | Khóa category; kiểm trùng; tạo/sửa/ngừng/kích hoạt; không xóa FK lịch sử. Tạo/đổi tin hoặc lĩnh vực kiểm active trong transaction. | FR27 / US48 / API-38–40 |
+| Dashboard | COUNT năm chỉ số FR28 từ DB thật, cùng snapshot đọc nếu cần nhất quán; không ghi DB. | FR28 / US49 / API-41 (SHOULD) |
 
-Hạn chế PostgreSQL: file PDF trong backend/storage/cv không thuộc giao dịch DB. Khi lưu file xong nhưng DB rollback phải xóa file; nếu tiến trình đứt giữa hai bước cần tác vụ dọn file mồ côi. Không bao giờ báo thành công nộp CV khi một phần chưa lưu.
+Hạn chế PostgreSQL: file PDF lưu trong private storage (APP_STORAGE_DIR; đường dẫn CV kế thừa cần kiểm kê), không thuộc transaction DB. Nếu DB rollback xóa file mới; kiểm tra file mồ côi có xác nhận; không báo thành công khi chưa lưu đủ.
 
-File minh chứng và logo cũng nằm ngoài transaction DB: lưu bằng khóa ngẫu nhiên ở khu vực phù hợp, kiểm tra nội dung/kích thước theo chính sách đã duyệt; chỉ ghi DB khi file sẵn sàng; rollback xóa file mới, không xóa file đang được tham chiếu. File cũ chỉ dọn sau commit theo chính sách lưu. Không ghi nội dung giấy tờ/khóa file vào log. Không mặc định gửi email hoặc mở rộng notifications cho Admin; NTD xem kết quả từ hồ sơ/tin, thông báo ứng tuyển cũ giữ nguyên.
+Logo cũng nằm ngoài transaction DB: key ngẫu nhiên, kiểm tra chữ ký/size, ghi DB khi file sẵn sàng; rollback dọn file mới, file cũ chỉ dọn sau commit và khi không còn tham chiếu. Không log key/file thật. Dữ liệu demo giữ qua nghiệm thu, dọn có xác nhận; không tự xóa file thật. Không mở rộng notifications/email ngoài phạm vi.
 
 ### 7.1. Đồng thời và idempotency
 
-1. Với luồng cần kiểm quyền khóa/xác minh: BEGIN → khóa các hàng users liên quan theo user_id tăng → employer_profiles cần thiết → danh mục khi tạo/đổi → job_posts → applications theo ID tăng → ghi thay đổi/thông báo → COMMIT. Mọi luồng cùng đụng các bảng này phải tuân cùng thứ tự; worker chỉ khóa job rồi đơn và không lấy khóa user/profile ngược. Admin khóa tài khoản dùng cùng hàng users; không có cửa sổ đọc quyền cũ rồi ghi mới sau khóa. Kiểm tra lại các điều kiện sau khi lấy khóa; xử lý deadlock/retry hữu hạn theo code đã kiểm thử.
+1. BEGIN → khóa users liên quan theo user_id tăng → employer_profiles cần thiết → danh mục khi tạo/đổi → job_posts → applications theo ID tăng → ghi thay đổi/thông báo → COMMIT. Kiểm tra lại role, account_status, token_version và predicate sau khóa. Worker chỉ khóa job rồi đơn, không lấy user/profile ngược; retry deadlock hữu hạn có test.
 
 2.  Đối với worker, chỉ cập nhật khi status=PENDING/RECRUITING tương ứng và ghi thông báo nếu UPDATE thực sự đổi trạng thái; worker chạy lại không tạo duplicate.
 
@@ -496,36 +476,36 @@ File minh chứng và logo cũng nằm ngoài transaction DB: lưu bằng khóa 
 
 4.  Duyệt muộn khi đã có ca qua giờ: giữ application_selected_slots bất biến; determined effective slot bằng start_at > decided_at với ONE_TIME hoặc lần lặp WEEKLY có start_at tương lai sau mốc duyệt.
 
-## 8. Kế hoạch migration và tương thích dữ liệu v4.0
+## 8. Kế hoạch migration và tương thích dữ liệu v4.1
 
 ### 8.1. Kiểm kê trước khi viết migration (D00)
 
 | Nguồn | Việc kiểm tra |
 | --- | --- |
 | Git | git status --short --branch; git rev-parse HEAD; git log -1; so với main đã xác minh. Không suy ra SHA từ tên ZIP. |
-| Migration | Kiểm tra backend/migrations, backend/scripts/migrate.js, schema_migrations, tên cột và constraint thực tế. Các V001–V005 là lịch sử baseline; không giả định số tiếp theo V006/V007. |
+| Migration | Kiểm tra backend/migrations, backend/scripts/migrate.js, schema_migrations và constraint thực. Kết quả pgAdmin người dùng cung cấp có V001–V006; đối chiếu file/checksum đầy đủ. Dự kiến V007 nếu không có bản mới hơn. |
 | Database | Kiểm tra database/schema đang kết nối, pg_catalog, information_schema, pg_indexes; đếm users/profile/tin/đơn/ca; kiểm tra file private đang được tham chiếu. |
-| Sao lưu | Tạo dump DB riêng có kiểm thử phục hồi trên DB thử nghiệm nếu có dữ liệu cần giữ. Hai ZIP code không thay thế pg_dump và backup private storage; không đưa dữ liệu thật vào ZIP bàn giao. |
+| Sao lưu | Backup/restore DB nguồn student_jobs_nhom5 sang student_jobs_nhom5_v4; sao lưu storage riêng; kiểm số dòng/FK/checksum, giữ nguồn nguyên vẹn. Hai ZIP code không thay thế pg_dump. Chưa có bằng chứng restore. |
 
 ### 8.2. Thứ tự migration đề xuất
 
 | Thứ tự | Mô tả migration mới (VNNN chỉ là placeholder) | Điều kiện trước khi chạy |
 | --- | --- | --- |
 | A — nền v3 | Bù phần lịch ca, notifications, selected_slots, trạng thái hủy còn thiếu nếu có | Đối chiếu schema thực; không tạo trùng hoặc sửa checksum cũ. |
-| B — D07C | VNNN__create_administrative_catalogs.sql; seed phiên bản mã địa bàn | Chốt nguồn, PK, FK, mã và cách giữ lịch sử địa bàn. |
-| C — D15 / D02 | VNNN__extend_users_account_status.sql | Chốt BR47 và hành vi JWT, kiểm tra account legacy. |
-| D — D03 / D15A | VNNN__extend_employer_verification.sql | Chốt BR45/48/51, bảng lĩnh vực, file private, phân loại hồ sơ cũ. |
-| E — D15C | VNNN__extend_job_categories.sql | Thêm is_active, giữ category_id cũ, kiểm tra trùng. |
-| F — D05 / D15B | VNNN__extend_jobs_moderation_location.sql | Chốt BR46/47/50, policy tin cũ, FK tỉnh/phường; code kiểm quyền đồng bộ. |
+| B — D07C | VNNN__create_administrative_catalogs.sql; seed phiên bản mã địa bàn | Kiểm chứng nguồn, PK, FK, mã và lịch sử địa bàn. |
+| C — D02 / D15 | VNNN__extend_users_account_status.sql | account_status, metadata khóa/mở, token_version; đồng bộ JWT, kiểm tra legacy. |
+| D — nền D03 / D15C | VNNN__extend_job_categories.sql | Thêm is_active trước đăng ký NTD/API-29; giữ category_id, kiểm trùng legacy trước ràng buộc. D15C hoàn thiện API quản trị, không tạo migration trùng. |
+| E — D03 | VNNN__extend_employer_profile.sql | Hồ sơ thường, FK ngành dùng chung, địa bàn, logo tùy chọn; không cột xác minh. |
+| F — D05 / D15B | VNNN__extend_jobs_moderation_location.sql | PENDING legacy chưa duyệt, FK địa bàn, predicate và quyền đồng bộ. |
 | G — hoàn thiện | VNNN__validate_v4_constraints.sql (nếu cần) | Kiểm tra backfill và constraints; chỉ SET NOT NULL khi dữ liệu đã đạt yêu cầu. |
 
 ### 8.3. Quy tắc chuyển tiếp
 
 • Thêm cột mới theo giai đoạn: cho NULL đối với cột mới chưa có dữ liệu, seed danh mục trước FK, backfill có đối soát và kiểm tra constraint. Không sửa V001–V006 hoặc bất kỳ migration đã chạy. Chọn số từ thực tế file và schema_migrations.
 
-• Không giả lập hồ sơ xác minh: không bịa tax_code, phone, giấy tờ, actor Admin hoặc mã địa bàn. Đề xuất đánh dấu hồ sơ/tin legacy chưa được xét duyệt là PENDING và giữ dữ liệu; chính sách này có thể làm ẩn tin cũ, cần xác nhận BR50 trước rollout. Không tự gán APPROVED. Nếu migration đang staging còn NULL, không đưa bản ghi đó vào công khai/đăng tin trước khi phân loại.
+• Không bịa tax_code, phone, actor Admin hoặc mã địa bàn. Tin legacy chưa có bằng chứng duyệt đặt moderation_status=PENDING, metadata NULL; có thể làm ẩn tin cũ. Không tự APPROVED. Nếu staging còn NULL, không công khai. Không thay trạng thái vòng đời/đơn do backfill.
 
-• users cũ: đề xuất ACTIVE nếu không có bằng chứng bị khóa; kiểm tra role, dữ liệu và phê duyệt kế hoạch. Danh mục cũ: đề xuất TRUE, không đổi ID. Hồ sơ/tin cũ có thể để NULL các trường địa bàn và xác minh còn thiếu; kiểm tra bắt buộc đối với hồ sơ/tin mới ở Service. Không ép NOT NULL các trường legacy còn thiếu.
+• users cũ ACTIVE nếu không có bằng chứng khóa; kiểm tra dữ liệu trước backfill, token_version=0; token thiếu claim phải login lại. Danh mục cũ TRUE nếu chưa có trạng thái; giữ ID. Hồ sơ/tin legacy có thể NULL địa bàn/trường mới chưa có dữ liệu; kiểm tra bắt buộc với tạo mới, không ép NOT NULL cứng.
 
 • Giữ city, location_detail, PK/FK, salary_min/max/unit, metadata CV, trạng thái vòng đời và lịch sử chọn ca. Tin legacy schedule_type=NULL vẫn không Matching và không suy lịch từ work_time; chỉ được đọc/nộp CV không ca khi đạt điều kiện duyệt/công khai và quy tắc legacy của SRS. Không đổi trạng thái đơn vì backfill hoặc kiểm duyệt.
 
@@ -551,30 +531,30 @@ File minh chứng và logo cũng nằm ngoài transaction DB: lưu bằng khóa 
 | DB12 | Hai worker chạy expiration, duyệt đơn đồng thời | Một kết quả cuối hợp lệ; không nhân đôi notification. |
 | DB13 | SV rảnh CN 21:00→T2 03:00, job CN 22:00→T2 02:00 | Match 1/1=100%; ca đêm 1 record; chống chồng chu kỳ. |
 | DB14 | Student chọn slot thuộc tin khác trong application_selected_slots | Service từ chối và rollback toàn bộ; FK đơn lẻ không đủ kiểm chứng. |
-| DB15 | Tin đã có đơn REJECTED, NTD sửa day_of_week/ANY-ALL | SCHEDULE_LOCKED; job_time_slots không đổi. |
+| DB15 | Tin đã có đơn REJECTED, NTD sửa lịch hoặc lương/nội dung | SCHEDULE_LOCKED nếu gửi trường lịch, MODERATION_EDIT_NOT_ALLOWED nếu chỉ nội dung; job/ca không đổi. |
 | DB16 | Tin legacy work_time TEXT không ca | Chỉ GET công khai nếu đã duyệt và đủ điều kiện; không Matching, hạn hủy không xác định. |
 | DB17 | Tin COMPLETED + đơn APPROVED / CANCELLED+JOB_CANCELLED | Chỉ cặp đầu được đánh giá; không có số liệu thu nhập. |
-| DB18 | Đăng ký NTD đủ/thiếu trường, phường sai tỉnh, file lỗi | Tạo user/profile PENDING hoặc rollback cả DB và file mới; chưa được đăng tin. |
-| DB19 | Admin duyệt/từ chối NTD PENDING; SV/NTD khác thử duyệt | Ghi actor/time/reason đúng; sai role hoặc quyết định lặp không ghi một phần. |
-| DB20 | Tin tạo bởi NTD chưa duyệt hoặc LOCKED | Chặn; NTD ACTIVE+APPROVED tạo RECRUITING/PENDING. |
+| DB18 | Đăng ký NTD đủ/thiếu trường, phường sai tỉnh, logo lỗi | User ACTIVE + profile thường; không yêu cầu minh chứng/thuế; lỗi rollback cả DB và file mới. |
+| DB19 | Lịch sử v4.0: xác minh NTD | WON’T v4.1 — không tạo test nghiệm thu cho US46. |
+| DB20 | NTD ACTIVE tạo tin; NTD LOCKED thử tạo | ACTIVE tạo RECRUITING/PENDING; LOCKED bị chặn. |
 | DB21 | Tin PENDING/REJECTED vs APPROVED | Chỉ tin đủ điều kiện vào Homepage, API-09, API-26 và API-13; chi tiết/quyền lịch sử đúng. |
-| DB22 | Admin khóa SV/NTD có JWT còn hạn; thử mở khóa | Token cũ bị chặn khi LOCKED; lưu metadata; mở khóa không tự duyệt tin/NTD, giữ lịch sử; BR47 còn mở. |
+| DB22 | Admin khóa SV/NTD có JWT còn hạn; thử mở khóa | JWT trước khóa bị chặn cả sau mở khóa; token_version tăng khi khóa; login mới; giữ lịch sử. |
 | DB23 | Danh mục ngừng sử dụng đang có tin | FK lịch sử còn; không chọn mới, không xóa cứng; race với đăng tin không tạo bản ghi trái điều kiện. |
 | DB24 | Chọn toàn tỉnh A và hai phường tỉnh B | OR nhóm địa bàn, AND lọc khác; FK ghép không cho phường sai tỉnh; tin legacy NULL không khớp sai. |
-| DB25 | Người khác truy cập minh chứng hoặc URL tĩnh | Bị chặn; không lộ key, không phục vụ file công khai; thử file lỗi theo chính sách đã duyệt. |
-| DB26 | Duyệt lại hồ sơ/tin, khóa NTD có đơn | Chờ chốt BR45–47; không tự sửa trạng thái nghiệp vụ/ca; kiểm thử sau phê duyệt. |
+| DB25 | Người ngoài truy cập CV hoặc đường dẫn storage; logo sai loại/size | CV bị chặn, không lộ key; logo đúng quyền và kiểm chữ ký, size ≤2 MiB. |
+| DB26 | Sửa tin đã duyệt chưa/có đơn, khóa NTD có đơn, duyệt SV LOCKED | Chưa có đơn về PENDING; có đơn chặn sửa; chặn thao tác NTD LOCKED/duyệt mới SV LOCKED; giữ lịch sử, worker vẫn chạy. |
 | DB27 | Dữ liệu cũ thiếu mã/file, có đơn và review | Migration giữ ID, số dòng và FK; không tự gán APPROVED; không xóa file/ca. |
-| DB28 | Dashboard có fixture đã biết | Sáu số đếm khớp dữ liệu, không lộ thông tin cá nhân; SHOULD, chưa nghiệm thu. |
+| DB28 | Dashboard có fixture đã biết | Năm số đếm khớp DB, không lộ PII; SHOULD, chưa nghiệm thu. |
 | DB29 | Admin khóa/duyệt cùng lúc NTD tạo tin hoặc SV ứng tuyển | Khóa đúng thứ tự; kiểm tra lại quyền sau khóa; không ghi dữ liệu trái trạng thái. |
 | DB30 | Cố INSERT ca WEEKLY day_of_week=NULL hoặc lịch sử hủy thiếu status_before_cancel | CHECK từ chối NULL không hợp lệ; giao dịch rollback. |
 
 Các hàng trên là KỊCH BẢN CẦN KIỂM THỬ; chưa có kết quả PASS/FAIL. Khi triển khai, chạy node:test và truy vấn PostgreSQL thật, ghi log và commit đã được xác minh.
 
-## 10. Truy vết SRS v2.0 / phạm vi v4.0 ↔ API ↔ dữ liệu
+## 10. Truy vết SRS v2.1 / phạm vi v4.1 ↔ API ↔ dữ liệu
 
-| US / FR / AC | API nền v3.0 hoặc mới chờ chốt | Bảng / dữ liệu trung tâm |
+| US / FR / AC | API v4.1 | Bảng / dữ liệu trung tâm |
 | --- | --- | --- |
-| US01–05 / FR1 / AC1.* | API-01/02 | users, student_profiles, employer_profiles; xác minh/khóa; quay lại tin ở FE. |
+| US01–05 / FR1 / AC1.* | API-01/02/27/28/29/42 (logo tùy chọn) | users, profiles, địa bàn, danh mục; token_version; quay lại tin ở FE. |
 | US06–07 / FR2,9,21 / AC2.*,9.*,21.* | API-07/08/11/12 | job_categories, job_posts, job_time_slots, địa bàn, moderation_status. |
 | US08–11,17 / FR3,6 / AC3.*,6.* | API-09/10/14 | job_posts, ca, ngành, địa bàn, kiểm duyệt; lịch sử đơn. |
 | US12 / FR4 / AC4.* | API-13/17 | applications, application_selected_slots, job_time_slots, chủ tin và kiểm duyệt. |
@@ -584,50 +564,49 @@ Các hàng trên là KỊCH BẢN CẦN KIỂM THỬ; chưa có kết quả PASS
 | US22 / FR8 / AC8.* | API-22 | notifications, applications. |
 | US35–38 / FR15–18 / AC15–18.* | API-03–06 | users, student_profiles, employer_profiles, địa bàn, lĩnh vực. |
 | US39 / FR19 / AC19.* | API-23 | users + profiles, account_status. |
-| US40–41 / FR26 / AC26.* | API Admin chờ chốt | users.account_status, lock/unlock metadata. |
+| US40–41 / FR26 / AC26.* | API-37 | users.account_status, token_version, metadata khóa/mở. |
 | US42 / FR20 / AC20.* | API-24/25 | student_availability_slots. |
 | US43 / FR21 / AC21.* | API-08/10/11 | job_posts, job_time_slots. |
 | US44 / FR22 / AC22.* | API-26 | job_posts, job_time_slots, student_availability_slots; kiểm duyệt. |
 | US45 / FR23 / AC23.* | API-19/22 | cancelled_at, cancel_reason, status_before_cancel, notifications. |
-| US46 / FR24 / AC24.* | API-01/05/06/08; API Admin mới chờ chốt | employer_profiles, users, minh chứng. |
-| US47 / FR25 / AC25.* | API-08/09/10/11/13/26; API Admin mới chờ chốt | job_posts, job_time_slots, users/profile. |
-| US48 / FR27 / AC27.* | API-07/08/11; API Admin mới chờ chốt | job_categories.is_active. |
-| US49 / FR28 / AC28.* (SHOULD) | API Dashboard chờ chốt | COUNT users, profiles, jobs, applications. |
+| US46 / FR24 / AC24.* | API-30–33 (ngoài MVP) | WON’T — giữ mã lịch sử, không thêm bảng/cột xác minh. |
+| US47 / FR25 / AC25.* | API-08/09/10/11/13/26/34–36 | job_posts, job_time_slots, users/profile. |
+| US48 / FR27 / AC27.* | API-07/08/11/29/38–40 | job_categories.is_active; FK industry_id. |
+| US49 / FR28 / AC28.* (SHOULD) | API-41 | COUNT users, job_posts, applications. |
 
-US23–US34 là 12 WON’T. Không thêm bảng cho nhóm này. Các API-01–26 là mã nền, không khẳng định endpoint đã đáp ứng v4.0. Bảng truy vết chi tiết US/UC/AC lấy từ SRS và Product Backlog mới.
+US23–US34 và US46 là 13 WON’T; không thêm bảng cho nhóm này. API-01–26 giữ mã nền, 27–29 và 34–42 còn phạm vi. Truy vết chi tiết theo SRS/Backlog v4.1.
 
-### 10.1. Sáu chỉ số Dashboard (FR28, SHOULD)
+### 10.1. Năm chỉ số Dashboard (FR28, SHOULD)
 
-| Chỉ số | Điều kiện đếm đề xuất |
+| Chỉ số | Điều kiện đếm |
 | --- | --- |
 | Tổng SV | COUNT users WHERE role='STUDENT'; gồm ACTIVE và LOCKED. |
 | Tổng NTD | COUNT users WHERE role='EMPLOYER'; gồm ACTIVE và LOCKED. |
-| NTD chờ duyệt | COUNT employer_profiles WHERE verification_status='PENDING'. |
 | Tin chờ duyệt | COUNT job_posts WHERE moderation_status='PENDING'. |
-| Tin đang tuyển | COUNT tin RECRUITING, APPROVED và đủ điều kiện công khai FR3; quy tắc BR47 cần chốt. |
+| Tin đang tuyển | COUNT tin RECRUITING, APPROVED, chủ NTD ACTIVE và đủ điều kiện mặc định API-09. |
 | Tổng đơn | COUNT applications, mọi trạng thái. |
 
-Các định nghĩa đếm là thiết kế đề xuất để API v4.0 chốt; không tạo bảng cache hay nhân bản số đếm; dùng COUNT theo bảng gốc để không nhân dòng vì join ca/đơn. Không thống kê NTD riêng theo US29 (WON’T).
+Dùng COUNT trên bảng gốc không nhân dòng vì join ca/đơn; không tạo bảng cache. pending_jobs đếm mọi vòng đời có moderation_status=PENDING. Không thống kê NTD riêng theo US29 (WON’T).
 
 ## 11. Quy trình cập nhật database chung và checklist bàn giao
 
-• Tài trực tiếp triển khai từng Dxx, không phân code độc lập. D00 kiểm kê; D07C địa bàn trước D03/D05/D07; D15/15A quyền và xác minh trước D05; D15C danh mục; D15B kiểm duyệt trước công khai/Matching/ứng tuyển; D15D Dashboard sau dữ liệu nghiệp vụ. Mã mở rộng theo Roadmap Backlog v4.0, chưa phải Sprint chính thức.
+• Tài trực tiếp lập trình từng Dxx. D00 kiểm kê; D07C địa bàn trước D03/D05/D07; D15 quyền, D15C danh mục trước D05; D05 → D07A → D15B → D06; D15B trước công khai/Matching/ứng tuyển; D15D sau dữ liệu nghiệp vụ. D15A ngoài MVP; 24 đợt theo Backlog v4.1.
 
-• Trước mỗi đợt, đọc SRS, Backlog, schema này, API Contract tương ứng và AGENTS.md; nêu file, cột, migration, API, SHA nền và phụ thuộc. Chờ xác nhận các cổng ở mục 12.6 trước triển khai.
+• Đọc SRS/Backlog/Schema/API/AGENTS; xác định file, cột, migration, API, SHA nền và phụ thuộc. Kiểm chứng mục 12.6 trước code; không hỏi lại BR đã duyệt, báo nếu cần đổi ngoài phạm vi.
 
 • Viết migration mới đúng VNNN__mo_ta.sql trong backend/migrations theo engine đang dùng. Test DB sạch, DB legacy, rollback, constraint, quyền API, đồng thời và ca qua đêm; ghi log test thật.
 
-• Sau khi test đạt, Codex báo hoàn thành Dxx, chốt commit tiếng Việt khi được phép, tạo FullBackup và ChangedFiles (manifest mới/sửa/xóa, SHA nền, SHA đích). Không chứa .env, JWT, CV/minh chứng thật, node_modules, .git hay DB dump thật. Tài gửi Phương/Khang để đặt file, kiểm thử, commit/push nhánh; Tài soát PR, merge sau xác minh.
+• Sau khi test đạt, Codex báo hoàn thành Dxx, chốt commit tiếng Việt khi được phép, tạo FullBackup và ChangedFiles (manifest mới/sửa/xóa, SHA nền, SHA đích). Không chứa .env, JWT, CV/file cá nhân thật, node_modules, .git hay DB dump thật. Tài gửi Phương/Khang để đặt file, kiểm thử, commit/push nhánh; Tài soát PR, merge sau xác minh.
 
 • Mẫu tên: CDTN2_Nhom5_D07C_DanhMucDiaBan_FullBackup_SHA_Ngay.zip và CDTN2_Nhom5_D07C_DanhMucDiaBan_ChangedFiles_SHA_Ngay.zip. Ghi rõ chức năng, mã đợt, commit và thời điểm. Chỉ báo PASS, commit/push/merge khi có bằng chứng terminal/GitHub. Hai ZIP là sao lưu code, không phải backup database.
 
 | Checklist | Tiêu chí trước bàn giao |
 | --- | --- |
-| Phạm vi | 49 US; 36 MUST, 1 SHOULD, 12 WON’T; FR1–28; 13 bảng mục tiêu, 14 nếu danh mục riêng duyệt. |
-| Dữ liệu | 11 bảng v3 giữ nguyên; 5 nhóm trạng thái nghiệp vụ độc lập; cột mã địa bàn, xác minh, kiểm duyệt, khóa, is_active được phê duyệt. |
+| Phạm vi | 49 US: 35 MUST, 1 SHOULD, 13 WON’T; FR24 ngoài MVP; 13 bảng nghiệp vụ, 1 kỹ thuật. |
+| Dữ liệu | 11 bảng nền giữ nguyên; trạng thái tài khoản, kiểm duyệt, vòng đời và đơn độc lập; địa bàn, token_version, is_active đồng bộ. |
 | Tính nhất quán | Không mất CV/ca/đơn; không tự APPROVED; dữ liệu thật không reset; file riêng tư. |
-| Kiểm thử | DB01–DB30 là kế hoạch, không tự PASS; BR còn mở không được nghiệm thu giả. |
-| Tài liệu | API v4.0, ERD, Sprint Plan, AGENTS phải đồng bộ trước code liên quan; không đổi tên tùy ý. |
+| Kiểm thử | DB01–DB30 là kế hoạch; DB19 ngoài MVP; chưa có PASS; nghiệm thu theo 113 AC MUST và 2 SHOULD riêng. |
+| Tài liệu | API v4.1, ERD, Sprint Plan, AGENTS phải đồng bộ trước code liên quan; không đổi tên tùy ý. |
 
 ## 12. SQL tham chiếu cho migration mới (KHÔNG chạy trực tiếp)
 
@@ -706,9 +685,9 @@ Giải thích: Khi hủy, current status đổi thành JOB_CANCELLED nhưng deci
 
 Giải thích: So sánh DATE tại Việt Nam, không phải chỉ so sánh timestamptz. first_shift_start_at của WEEKLY phải được suy ra từ lần xuất hiện ca sớm nhất thuộc khoảng hiệu lực; không lấy schedule_start_date làm mốc ca đầu nếu ngày đó không có ca.
 
-### 12.5. CHECK/FK tham chiếu cho v4.0 (đề xuất)
+### 12.5. CHECK/FK tham chiếu cho v4.1
 
-Ví dụ chỉ là các mảnh DDL, không phải migration chạy ngay. Kiểu mã VARCHAR(16), tên constraint, default và NULL phải được duyệt và đối chiếu schema thực. Trước VALIDATE CONSTRAINT cần kiểm tra dữ liệu chuyển tiếp.
+Các mảnh DDL chỉ tham chiếu; không chạy trực tiếp. Kiểu mã VARCHAR(16), FK và default theo thiết kế; kiểm tra schema/legacy trước VALIDATE CONSTRAINT.
 
 ```sql
 -- Địa bàn: trong administrative_wards
@@ -723,19 +702,11 @@ CHECK (account_status IN ('ACTIVE','LOCKED'))
 CHECK (account_status <> 'LOCKED' OR
   (locked_at IS NOT NULL AND locked_by IS NOT NULL
    AND lock_reason IS NOT NULL AND btrim(lock_reason) <> ''))
--- Trong employer_profiles: metadata của quyết định hiện tại
-CHECK (verification_status IN ('PENDING','APPROVED','REJECTED'))
-CHECK (
-  (verification_status = 'PENDING' AND verified_by IS NULL
-   AND verified_at IS NULL AND reject_reason IS NULL)
-  OR (verification_status = 'APPROVED' AND verified_by IS NOT NULL
-      AND verified_at IS NOT NULL AND reject_reason IS NULL)
-  OR (verification_status = 'REJECTED' AND verified_by IS NOT NULL
-      AND verified_at IS NOT NULL AND reject_reason IS NOT NULL
-      AND btrim(reject_reason) <> '')
-)
--- Trong job_posts: áp dụng shape tương tự cho moderation_status,
--- moderated_by, moderated_at và moderation_reason.
+-- JWT: thêm cột token_version INTEGER NOT NULL DEFAULT 0
+CHECK (token_version >= 0)
+-- Hồ sơ NTD: dùng chung danh mục
+FOREIGN KEY (industry_id) REFERENCES job_categories(category_id)
+-- Trong job_posts: metadata kiểm duyệt độc lập, không có trạng thái duyệt hồ sơ.
 CHECK (moderation_status IN ('PENDING','APPROVED','REJECTED'))
 CHECK (
   (moderation_status = 'PENDING' AND moderated_by IS NULL
@@ -748,22 +719,24 @@ CHECK (
 )
 ```
 
-Các cột trạng thái mục tiêu cần NOT NULL sau khi chuyển tiếp; CHECK IN một mình không loại NULL. Actor role, file tồn tại, đủ hồ sơ, quyền, ngày ca và điều kiện liên bảng do Service/transaction kiểm tra. Không bổ sung CHECK thuế trước khi BR45 được duyệt. SQL tham chiếu v3 tại 12.1/12.3 có thêm IS NOT NULL tường minh để thực thi đúng ràng buộc cũ; không sửa file migration đã chạy.
+Các cột trạng thái mục tiêu cần NOT NULL sau chuyển tiếp; CHECK IN không loại NULL. Actor role, token, file, quyền, ngày ca và điều kiện liên bảng kiểm tại Service/transaction. Không sửa migration đã áp dụng.
 
-### 12.6. Cổng phê duyệt trước code
+### 12.6. Kiểm chứng kỹ thuật trước code — BR đã chốt
 
-| Mã / nguồn | Quyết định còn mở | Ảnh hưởng |
+| Mã / nguồn | Kiểm chứng còn phải thực hiện | Ảnh hưởng |
 | --- | --- | --- |
-| BR43, BR50 | Nguồn mã địa bàn, độ dài/PK, hiệu lực, dữ liệu legacy, mã API và encoding nhóm tỉnh/phường | D07C; FK, seed, API-01/05/06/08/09/10/11/26. |
-| BR45, BR51 | Thuế COMPANY/cửa hàng, minh chứng hợp lệ, loại file, kích thước, lưu/xóa; gửi lại và sửa hồ sơ đã duyệt | D03, D04, D15A; đăng ký, lưu file, xác minh. |
-| BR48 | industry_id dùng chung hay riêng; chọn phương án 13 hay 14 bảng | D03/D15C; FK, seed, API đọc danh mục. |
-| BR46 | Sửa tin đã duyệt/chưa có đơn/đã có đơn; gửi duyệt lại | D06/D15B; public visibility, lịch sử ứng tuyển. |
-| BR47 | Khóa NTD có tin/đơn đang chờ hoặc đang thực hiện; quyền sau mở khóa và tác động token | D15; API bảo vệ, tìm kiếm, Matching, đơn cũ và worker. |
-| BR50 | Kế thừa tài khoản/tin cũ, metadata quyết định và rollout | D00/migration; không giả mạo APPROVED. |
-| FR24–28 | Chốt chính xác tên cột, kiểu, metadata, mã API mới và DTO; có cần audit đầy đủ hay không | ERD, API Contract v4.0, test quyền, Backlog. |
+| BR43/50 | Xác minh nguồn chính thức, phiên bản/ngày hiệu lực, mã duy nhất, seed và legacy; test encoding locations | D07C; API-27/28 và các API liên quan. |
+| BR45/51 | BR45 ngoài MVP; kiểm thử hồ sơ thường, CV và logo, storage riêng | D03/D04/D08/D09. |
+| BR48 | Kiểm tra danh mục dùng chung, FK industry_id, trùng tên/active | D03/D15C; API-29/38–40. |
+| BR46 | Kiểm thử sửa tin chưa/có đơn, metadata reset và race | D06/D15B. |
+| BR47 | Kiểm thử token_version, khóa/mở, quyền tin/đơn và worker | D02/D15. |
+| BR50 | Kiểm kê schema/checksum, backup/restore, legacy, DTO và mã lỗi | D00 và migration. |
+| FR25–28 | Đối chiếu hợp đồng API v4.1/ERD và test thật; chỉ xin duyệt nếu phát sinh thay đổi ngoài quyết định | D15B/C/D và D17. |
 
 ### Lịch sử phiên bản
 
 v3.0 — 13/11/2026: 11 bảng, lịch WEEKLY/ONE_TIME, Matching, hủy tin và các trạng thái E2E.
 
-v4.0 — 24/11/2026: tích hợp xác minh NTD, kiểm duyệt tin, khóa/mở khóa, danh mục, mã địa bàn, Dashboard truy vấn. Không có migration, dữ liệu, code hoặc commit mới được thực thi bởi tài liệu này. Thiết kế mới chỉ được triển khai sau phê duyệt và đối chiếu API/ERD.
+v4.0 — 24/11/2026: thiết kế mở rộng Admin/địa bàn, từng đề xuất xác minh NTD.
+
+v4.1 — 24/11/2026: bỏ xác minh NTD, chốt BR còn lại, DB đích riêng, 13 bảng, token_version, 38 API và 24 đợt; chưa sửa code, chạy migration hay kiểm thử runtime.
